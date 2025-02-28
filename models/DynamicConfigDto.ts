@@ -24,6 +24,7 @@ export class DynamicConfigDto {
     'maxBytesPerUser'?: number | null;
     'maxRequestsPerUser'?: number | null;
     'rateLimitResetMins'?: number | null;
+    'rollingSecret'?: string | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -95,6 +96,12 @@ export class DynamicConfigDto {
             "baseName": "rateLimitResetMins",
             "type": "number",
             "format": "int64"
+        },
+        {
+            "name": "rollingSecret",
+            "baseName": "rollingSecret",
+            "type": "string",
+            "format": ""
         }    ];
 
     static getAttributeTypeMap() {

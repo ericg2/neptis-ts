@@ -24,6 +24,7 @@ export class GlobalConfigPutDto {
     'maxBytesPerUser'?: number | null;
     'maxRequestsPerUser'?: number | null;
     'rateLimitResetMins'?: number | null;
+    'rollingSecret'?: string | null;
     'overwriteNulls'?: boolean;
 
     static readonly discriminator: string | undefined = undefined;
@@ -96,6 +97,12 @@ export class GlobalConfigPutDto {
             "baseName": "rateLimitResetMins",
             "type": "number",
             "format": "int64"
+        },
+        {
+            "name": "rollingSecret",
+            "baseName": "rollingSecret",
+            "type": "string",
+            "format": ""
         },
         {
             "name": "overwriteNulls",

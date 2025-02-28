@@ -5,7 +5,7 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createOneUser**](UserApi.md#createOneUser) | **POST** /api/users | 
-[**deleteOneUser**](UserApi.md#deleteOneUser) | **DELETE** /api/users | 
+[**deleteOneUser**](UserApi.md#deleteOneUser) | **DELETE** /api/users/{userName} | 
 [**disableOnePermissionForUser**](UserApi.md#disableOnePermissionForUser) | **DELETE** /api/users/{userName}/perms/{permissionName} | 
 [**enableOnePermissionForUser**](UserApi.md#enableOnePermissionForUser) | **POST** /api/users/{userName}/perms/{permissionName} | 
 [**getAllPermissionsForUser**](UserApi.md#getAllPermissionsForUser) | **GET** /api/users/{userName}/perms | 
@@ -106,7 +106,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userName** | [**string**] |  | (optional) defaults to undefined
+ **userName** | [**string**] |  | defaults to undefined
 
 
 ### Return type

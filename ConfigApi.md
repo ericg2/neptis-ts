@@ -81,6 +81,7 @@ const request: ConfigApiUpdateGlobalConfigRequest = {
     maxBytesPerUser: 1,
     maxRequestsPerUser: 1,
     rateLimitResetMins: 1,
+    rollingSecret: "rollingSecret_example",
     overwriteNulls: true,
   },
 };

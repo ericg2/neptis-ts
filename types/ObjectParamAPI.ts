@@ -1,5 +1,6 @@
 import { ResponseContext, RequestContext, HttpFile, HttpInfo } from '../http/http';
-import { Configuration} from '../configuration'
+import { Configuration, ConfigurationOptions } from '../configuration'
+import type { Middleware } from '../middleware';
 
 import { AuthInputDto } from '../models/AuthInputDto';
 import { AuthOutputDto } from '../models/AuthOutputDto';
@@ -62,14 +63,14 @@ export class ObjectAuthApi {
     /**
      * @param param the request object
      */
-    public authenticateWithHttpInfo(param: AuthApiAuthenticateRequest = {}, options?: Configuration): Promise<HttpInfo<AuthOutputDto>> {
+    public authenticateWithHttpInfo(param: AuthApiAuthenticateRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<AuthOutputDto>> {
         return this.api.authenticateWithHttpInfo(param.authInputDto,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public authenticate(param: AuthApiAuthenticateRequest = {}, options?: Configuration): Promise<AuthOutputDto> {
+    public authenticate(param: AuthApiAuthenticateRequest = {}, options?: ConfigurationOptions): Promise<AuthOutputDto> {
         return this.api.authenticate(param.authInputDto,  options).toPromise();
     }
 
@@ -109,42 +110,42 @@ export class ObjectAutoJobApi {
     /**
      * @param param the request object
      */
-    public deleteOneAutoJobWithHttpInfo(param: AutoJobApiDeleteOneAutoJobRequest = {}, options?: Configuration): Promise<HttpInfo<boolean>> {
+    public deleteOneAutoJobWithHttpInfo(param: AutoJobApiDeleteOneAutoJobRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<boolean>> {
         return this.api.deleteOneAutoJobWithHttpInfo(param.autoJobGetDto,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public deleteOneAutoJob(param: AutoJobApiDeleteOneAutoJobRequest = {}, options?: Configuration): Promise<boolean> {
+    public deleteOneAutoJob(param: AutoJobApiDeleteOneAutoJobRequest = {}, options?: ConfigurationOptions): Promise<boolean> {
         return this.api.deleteOneAutoJob(param.autoJobGetDto,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getAllAutoJobsWithHttpInfo(param: AutoJobApiGetAllAutoJobsRequest = {}, options?: Configuration): Promise<HttpInfo<Array<AutoJobConfigDto>>> {
+    public getAllAutoJobsWithHttpInfo(param: AutoJobApiGetAllAutoJobsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<Array<AutoJobConfigDto>>> {
         return this.api.getAllAutoJobsWithHttpInfo( options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getAllAutoJobs(param: AutoJobApiGetAllAutoJobsRequest = {}, options?: Configuration): Promise<Array<AutoJobConfigDto>> {
+    public getAllAutoJobs(param: AutoJobApiGetAllAutoJobsRequest = {}, options?: ConfigurationOptions): Promise<Array<AutoJobConfigDto>> {
         return this.api.getAllAutoJobs( options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public updateOneAutoJobWithHttpInfo(param: AutoJobApiUpdateOneAutoJobRequest = {}, options?: Configuration): Promise<HttpInfo<AutoJobConfigDto>> {
+    public updateOneAutoJobWithHttpInfo(param: AutoJobApiUpdateOneAutoJobRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<AutoJobConfigDto>> {
         return this.api.updateOneAutoJobWithHttpInfo(param.autoJobPutDto,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public updateOneAutoJob(param: AutoJobApiUpdateOneAutoJobRequest = {}, options?: Configuration): Promise<AutoJobConfigDto> {
+    public updateOneAutoJob(param: AutoJobApiUpdateOneAutoJobRequest = {}, options?: ConfigurationOptions): Promise<AutoJobConfigDto> {
         return this.api.updateOneAutoJob(param.autoJobPutDto,  options).toPromise();
     }
 
@@ -175,28 +176,28 @@ export class ObjectConfigApi {
     /**
      * @param param the request object
      */
-    public getGlobalConfigWithHttpInfo(param: ConfigApiGetGlobalConfigRequest = {}, options?: Configuration): Promise<HttpInfo<DynamicConfigDto>> {
+    public getGlobalConfigWithHttpInfo(param: ConfigApiGetGlobalConfigRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<DynamicConfigDto>> {
         return this.api.getGlobalConfigWithHttpInfo( options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getGlobalConfig(param: ConfigApiGetGlobalConfigRequest = {}, options?: Configuration): Promise<DynamicConfigDto> {
+    public getGlobalConfig(param: ConfigApiGetGlobalConfigRequest = {}, options?: ConfigurationOptions): Promise<DynamicConfigDto> {
         return this.api.getGlobalConfig( options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public updateGlobalConfigWithHttpInfo(param: ConfigApiUpdateGlobalConfigRequest = {}, options?: Configuration): Promise<HttpInfo<DynamicConfigDto>> {
+    public updateGlobalConfigWithHttpInfo(param: ConfigApiUpdateGlobalConfigRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<DynamicConfigDto>> {
         return this.api.updateGlobalConfigWithHttpInfo(param.globalConfigPutDto,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public updateGlobalConfig(param: ConfigApiUpdateGlobalConfigRequest = {}, options?: Configuration): Promise<DynamicConfigDto> {
+    public updateGlobalConfig(param: ConfigApiUpdateGlobalConfigRequest = {}, options?: ConfigurationOptions): Promise<DynamicConfigDto> {
         return this.api.updateGlobalConfig(param.globalConfigPutDto,  options).toPromise();
     }
 
@@ -417,182 +418,182 @@ export class ObjectDataApi {
     /**
      * @param param the request object
      */
-    public apiDatasGetWithHttpInfo(param: DataApiApiDatasGetRequest = {}, options?: Configuration): Promise<HttpInfo<Array<DataPointDto>>> {
+    public apiDatasGetWithHttpInfo(param: DataApiApiDatasGetRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<Array<DataPointDto>>> {
         return this.api.apiDatasGetWithHttpInfo( options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public apiDatasGet(param: DataApiApiDatasGetRequest = {}, options?: Configuration): Promise<Array<DataPointDto>> {
+    public apiDatasGet(param: DataApiApiDatasGetRequest = {}, options?: ConfigurationOptions): Promise<Array<DataPointDto>> {
         return this.api.apiDatasGet( options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public apiDatasPointUserPointNameDeleteWithHttpInfo(param: DataApiApiDatasPointUserPointNameDeleteRequest, options?: Configuration): Promise<HttpInfo<boolean>> {
+    public apiDatasPointUserPointNameDeleteWithHttpInfo(param: DataApiApiDatasPointUserPointNameDeleteRequest, options?: ConfigurationOptions): Promise<HttpInfo<boolean>> {
         return this.api.apiDatasPointUserPointNameDeleteWithHttpInfo(param.pointUser, param.pointName,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public apiDatasPointUserPointNameDelete(param: DataApiApiDatasPointUserPointNameDeleteRequest, options?: Configuration): Promise<boolean> {
+    public apiDatasPointUserPointNameDelete(param: DataApiApiDatasPointUserPointNameDeleteRequest, options?: ConfigurationOptions): Promise<boolean> {
         return this.api.apiDatasPointUserPointNameDelete(param.pointUser, param.pointName,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public apiDatasPointUserPointNameGetWithHttpInfo(param: DataApiApiDatasPointUserPointNameGetRequest, options?: Configuration): Promise<HttpInfo<DataPointDto>> {
+    public apiDatasPointUserPointNameGetWithHttpInfo(param: DataApiApiDatasPointUserPointNameGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<DataPointDto>> {
         return this.api.apiDatasPointUserPointNameGetWithHttpInfo(param.pointUser, param.pointName,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public apiDatasPointUserPointNameGet(param: DataApiApiDatasPointUserPointNameGetRequest, options?: Configuration): Promise<DataPointDto> {
+    public apiDatasPointUserPointNameGet(param: DataApiApiDatasPointUserPointNameGetRequest, options?: ConfigurationOptions): Promise<DataPointDto> {
         return this.api.apiDatasPointUserPointNameGet(param.pointUser, param.pointName,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public apiDatasPointUserPointNamePutWithHttpInfo(param: DataApiApiDatasPointUserPointNamePutRequest, options?: Configuration): Promise<HttpInfo<DataPointDto>> {
+    public apiDatasPointUserPointNamePutWithHttpInfo(param: DataApiApiDatasPointUserPointNamePutRequest, options?: ConfigurationOptions): Promise<HttpInfo<DataPointDto>> {
         return this.api.apiDatasPointUserPointNamePutWithHttpInfo(param.pointUser, param.pointName, param.maxBytes,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public apiDatasPointUserPointNamePut(param: DataApiApiDatasPointUserPointNamePutRequest, options?: Configuration): Promise<DataPointDto> {
+    public apiDatasPointUserPointNamePut(param: DataApiApiDatasPointUserPointNamePutRequest, options?: ConfigurationOptions): Promise<DataPointDto> {
         return this.api.apiDatasPointUserPointNamePut(param.pointUser, param.pointName, param.maxBytes,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public apiDatasPointUserPointNameSharesDeleteWithHttpInfo(param: DataApiApiDatasPointUserPointNameSharesDeleteRequest, options?: Configuration): Promise<HttpInfo<boolean>> {
+    public apiDatasPointUserPointNameSharesDeleteWithHttpInfo(param: DataApiApiDatasPointUserPointNameSharesDeleteRequest, options?: ConfigurationOptions): Promise<HttpInfo<boolean>> {
         return this.api.apiDatasPointUserPointNameSharesDeleteWithHttpInfo(param.pointUser, param.pointName, param.user,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public apiDatasPointUserPointNameSharesDelete(param: DataApiApiDatasPointUserPointNameSharesDeleteRequest, options?: Configuration): Promise<boolean> {
+    public apiDatasPointUserPointNameSharesDelete(param: DataApiApiDatasPointUserPointNameSharesDeleteRequest, options?: ConfigurationOptions): Promise<boolean> {
         return this.api.apiDatasPointUserPointNameSharesDelete(param.pointUser, param.pointName, param.user,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public apiDatasPointUserPointNameSharesGetWithHttpInfo(param: DataApiApiDatasPointUserPointNameSharesGetRequest, options?: Configuration): Promise<HttpInfo<Array<DataPointShareDto>>> {
+    public apiDatasPointUserPointNameSharesGetWithHttpInfo(param: DataApiApiDatasPointUserPointNameSharesGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<Array<DataPointShareDto>>> {
         return this.api.apiDatasPointUserPointNameSharesGetWithHttpInfo(param.pointUser, param.pointName, param.user,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public apiDatasPointUserPointNameSharesGet(param: DataApiApiDatasPointUserPointNameSharesGetRequest, options?: Configuration): Promise<Array<DataPointShareDto>> {
+    public apiDatasPointUserPointNameSharesGet(param: DataApiApiDatasPointUserPointNameSharesGetRequest, options?: ConfigurationOptions): Promise<Array<DataPointShareDto>> {
         return this.api.apiDatasPointUserPointNameSharesGet(param.pointUser, param.pointName, param.user,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public apiDatasPointUserPointNameSharesPutWithHttpInfo(param: DataApiApiDatasPointUserPointNameSharesPutRequest, options?: Configuration): Promise<HttpInfo<DataPointShareDto>> {
+    public apiDatasPointUserPointNameSharesPutWithHttpInfo(param: DataApiApiDatasPointUserPointNameSharesPutRequest, options?: ConfigurationOptions): Promise<HttpInfo<DataPointShareDto>> {
         return this.api.apiDatasPointUserPointNameSharesPutWithHttpInfo(param.pointUser, param.pointName, param.dataPointShareDto,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public apiDatasPointUserPointNameSharesPut(param: DataApiApiDatasPointUserPointNameSharesPutRequest, options?: Configuration): Promise<DataPointShareDto> {
+    public apiDatasPointUserPointNameSharesPut(param: DataApiApiDatasPointUserPointNameSharesPutRequest, options?: ConfigurationOptions): Promise<DataPointShareDto> {
         return this.api.apiDatasPointUserPointNameSharesPut(param.pointUser, param.pointName, param.dataPointShareDto,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public apiDatasPostWithHttpInfo(param: DataApiApiDatasPostRequest = {}, options?: Configuration): Promise<HttpInfo<DataPointDto>> {
+    public apiDatasPostWithHttpInfo(param: DataApiApiDatasPostRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<DataPointDto>> {
         return this.api.apiDatasPostWithHttpInfo(param.name, param.maxBytes,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public apiDatasPost(param: DataApiApiDatasPostRequest = {}, options?: Configuration): Promise<DataPointDto> {
+    public apiDatasPost(param: DataApiApiDatasPostRequest = {}, options?: ConfigurationOptions): Promise<DataPointDto> {
         return this.api.apiDatasPost(param.name, param.maxBytes,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public browseFilesForDataWithHttpInfo(param: DataApiBrowseFilesForDataRequest = {}, options?: Configuration): Promise<HttpInfo<Array<FileDto>>> {
+    public browseFilesForDataWithHttpInfo(param: DataApiBrowseFilesForDataRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<Array<FileDto>>> {
         return this.api.browseFilesForDataWithHttpInfo(param.dataPointBrowseGetDto,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public browseFilesForData(param: DataApiBrowseFilesForDataRequest = {}, options?: Configuration): Promise<Array<FileDto>> {
+    public browseFilesForData(param: DataApiBrowseFilesForDataRequest = {}, options?: ConfigurationOptions): Promise<Array<FileDto>> {
         return this.api.browseFilesForData(param.dataPointBrowseGetDto,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public deleteOneFileForDataWithHttpInfo(param: DataApiDeleteOneFileForDataRequest = {}, options?: Configuration): Promise<HttpInfo<boolean>> {
+    public deleteOneFileForDataWithHttpInfo(param: DataApiDeleteOneFileForDataRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<boolean>> {
         return this.api.deleteOneFileForDataWithHttpInfo(param.body,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public deleteOneFileForData(param: DataApiDeleteOneFileForDataRequest = {}, options?: Configuration): Promise<boolean> {
+    public deleteOneFileForData(param: DataApiDeleteOneFileForDataRequest = {}, options?: ConfigurationOptions): Promise<boolean> {
         return this.api.deleteOneFileForData(param.body,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public dumpOneFileForDataWithHttpInfo(param: DataApiDumpOneFileForDataRequest = {}, options?: Configuration): Promise<HttpInfo<FileOutputDto>> {
+    public dumpOneFileForDataWithHttpInfo(param: DataApiDumpOneFileForDataRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<FileOutputDto>> {
         return this.api.dumpOneFileForDataWithHttpInfo(param.body,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public dumpOneFileForData(param: DataApiDumpOneFileForDataRequest = {}, options?: Configuration): Promise<FileOutputDto> {
+    public dumpOneFileForData(param: DataApiDumpOneFileForDataRequest = {}, options?: ConfigurationOptions): Promise<FileOutputDto> {
         return this.api.dumpOneFileForData(param.body,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getAllJobsForDataWithHttpInfo(param: DataApiGetAllJobsForDataRequest, options?: Configuration): Promise<HttpInfo<Array<RepoDataJobDto>>> {
+    public getAllJobsForDataWithHttpInfo(param: DataApiGetAllJobsForDataRequest, options?: ConfigurationOptions): Promise<HttpInfo<Array<RepoDataJobDto>>> {
         return this.api.getAllJobsForDataWithHttpInfo(param.pointUser, param.pointName,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getAllJobsForData(param: DataApiGetAllJobsForDataRequest, options?: Configuration): Promise<Array<RepoDataJobDto>> {
+    public getAllJobsForData(param: DataApiGetAllJobsForDataRequest, options?: ConfigurationOptions): Promise<Array<RepoDataJobDto>> {
         return this.api.getAllJobsForData(param.pointUser, param.pointName,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public updateOneFileForDataWithHttpInfo(param: DataApiUpdateOneFileForDataRequest = {}, options?: Configuration): Promise<HttpInfo<boolean>> {
+    public updateOneFileForDataWithHttpInfo(param: DataApiUpdateOneFileForDataRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<boolean>> {
         return this.api.updateOneFileForDataWithHttpInfo(param.filePutDto,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public updateOneFileForData(param: DataApiUpdateOneFileForDataRequest = {}, options?: Configuration): Promise<boolean> {
+    public updateOneFileForData(param: DataApiUpdateOneFileForDataRequest = {}, options?: ConfigurationOptions): Promise<boolean> {
         return this.api.updateOneFileForData(param.filePutDto,  options).toPromise();
     }
 
@@ -623,56 +624,56 @@ export class ObjectInfoApi {
     /**
      * @param param the request object
      */
-    public getSystemSummaryWithHttpInfo(param: InfoApiGetSystemSummaryRequest = {}, options?: Configuration): Promise<HttpInfo<SystemStatusDto>> {
+    public getSystemSummaryWithHttpInfo(param: InfoApiGetSystemSummaryRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<SystemStatusDto>> {
         return this.api.getSystemSummaryWithHttpInfo( options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getSystemSummary(param: InfoApiGetSystemSummaryRequest = {}, options?: Configuration): Promise<SystemStatusDto> {
+    public getSystemSummary(param: InfoApiGetSystemSummaryRequest = {}, options?: ConfigurationOptions): Promise<SystemStatusDto> {
         return this.api.getSystemSummary( options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getValidNotifyMethodsWithHttpInfo(param: InfoApiGetValidNotifyMethodsRequest = {}, options?: Configuration): Promise<HttpInfo<Array<string>>> {
+    public getValidNotifyMethodsWithHttpInfo(param: InfoApiGetValidNotifyMethodsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<Array<string>>> {
         return this.api.getValidNotifyMethodsWithHttpInfo( options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getValidNotifyMethods(param: InfoApiGetValidNotifyMethodsRequest = {}, options?: Configuration): Promise<Array<string>> {
+    public getValidNotifyMethods(param: InfoApiGetValidNotifyMethodsRequest = {}, options?: ConfigurationOptions): Promise<Array<string>> {
         return this.api.getValidNotifyMethods( options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getValidNotifySubscriptionsWithHttpInfo(param: InfoApiGetValidNotifySubscriptionsRequest = {}, options?: Configuration): Promise<HttpInfo<Array<string>>> {
+    public getValidNotifySubscriptionsWithHttpInfo(param: InfoApiGetValidNotifySubscriptionsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<Array<string>>> {
         return this.api.getValidNotifySubscriptionsWithHttpInfo( options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getValidNotifySubscriptions(param: InfoApiGetValidNotifySubscriptionsRequest = {}, options?: Configuration): Promise<Array<string>> {
+    public getValidNotifySubscriptions(param: InfoApiGetValidNotifySubscriptionsRequest = {}, options?: ConfigurationOptions): Promise<Array<string>> {
         return this.api.getValidNotifySubscriptions( options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getValidPermissionsWithHttpInfo(param: InfoApiGetValidPermissionsRequest = {}, options?: Configuration): Promise<HttpInfo<Array<string>>> {
+    public getValidPermissionsWithHttpInfo(param: InfoApiGetValidPermissionsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<Array<string>>> {
         return this.api.getValidPermissionsWithHttpInfo( options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getValidPermissions(param: InfoApiGetValidPermissionsRequest = {}, options?: Configuration): Promise<Array<string>> {
+    public getValidPermissions(param: InfoApiGetValidPermissionsRequest = {}, options?: ConfigurationOptions): Promise<Array<string>> {
         return this.api.getValidPermissions( options).toPromise();
     }
 
@@ -732,70 +733,70 @@ export class ObjectJobApi {
     /**
      * @param param the request object
      */
-    public cancelOneJobWithHttpInfo(param: JobApiCancelOneJobRequest, options?: Configuration): Promise<HttpInfo<boolean>> {
+    public cancelOneJobWithHttpInfo(param: JobApiCancelOneJobRequest, options?: ConfigurationOptions): Promise<HttpInfo<boolean>> {
         return this.api.cancelOneJobWithHttpInfo(param.id,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public cancelOneJob(param: JobApiCancelOneJobRequest, options?: Configuration): Promise<boolean> {
+    public cancelOneJob(param: JobApiCancelOneJobRequest, options?: ConfigurationOptions): Promise<boolean> {
         return this.api.cancelOneJob(param.id,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getAllJobsWithHttpInfo(param: JobApiGetAllJobsRequest = {}, options?: Configuration): Promise<HttpInfo<Array<RepoDataJobDto>>> {
+    public getAllJobsWithHttpInfo(param: JobApiGetAllJobsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<Array<RepoDataJobDto>>> {
         return this.api.getAllJobsWithHttpInfo( options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getAllJobs(param: JobApiGetAllJobsRequest = {}, options?: Configuration): Promise<Array<RepoDataJobDto>> {
+    public getAllJobs(param: JobApiGetAllJobsRequest = {}, options?: ConfigurationOptions): Promise<Array<RepoDataJobDto>> {
         return this.api.getAllJobs( options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getOneJobWithHttpInfo(param: JobApiGetOneJobRequest, options?: Configuration): Promise<HttpInfo<RepoDataJobDto>> {
+    public getOneJobWithHttpInfo(param: JobApiGetOneJobRequest, options?: ConfigurationOptions): Promise<HttpInfo<RepoDataJobDto>> {
         return this.api.getOneJobWithHttpInfo(param.id,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getOneJob(param: JobApiGetOneJobRequest, options?: Configuration): Promise<RepoDataJobDto> {
+    public getOneJob(param: JobApiGetOneJobRequest, options?: ConfigurationOptions): Promise<RepoDataJobDto> {
         return this.api.getOneJob(param.id,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public startOneBackupWithHttpInfo(param: JobApiStartOneBackupRequest = {}, options?: Configuration): Promise<HttpInfo<RepoDataJobDto>> {
+    public startOneBackupWithHttpInfo(param: JobApiStartOneBackupRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<RepoDataJobDto>> {
         return this.api.startOneBackupWithHttpInfo(param.jobBackupDto,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public startOneBackup(param: JobApiStartOneBackupRequest = {}, options?: Configuration): Promise<RepoDataJobDto> {
+    public startOneBackup(param: JobApiStartOneBackupRequest = {}, options?: ConfigurationOptions): Promise<RepoDataJobDto> {
         return this.api.startOneBackup(param.jobBackupDto,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public startOneRestoreWithHttpInfo(param: JobApiStartOneRestoreRequest = {}, options?: Configuration): Promise<HttpInfo<RepoDataJobDto>> {
+    public startOneRestoreWithHttpInfo(param: JobApiStartOneRestoreRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<RepoDataJobDto>> {
         return this.api.startOneRestoreWithHttpInfo(param.jobRestoreDto,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public startOneRestore(param: JobApiStartOneRestoreRequest = {}, options?: Configuration): Promise<RepoDataJobDto> {
+    public startOneRestore(param: JobApiStartOneRestoreRequest = {}, options?: ConfigurationOptions): Promise<RepoDataJobDto> {
         return this.api.startOneRestore(param.jobRestoreDto,  options).toPromise();
     }
 
@@ -837,42 +838,42 @@ export class ObjectLogApi {
     /**
      * @param param the request object
      */
-    public deleteOneLogWithHttpInfo(param: LogApiDeleteOneLogRequest, options?: Configuration): Promise<HttpInfo<boolean>> {
+    public deleteOneLogWithHttpInfo(param: LogApiDeleteOneLogRequest, options?: ConfigurationOptions): Promise<HttpInfo<boolean>> {
         return this.api.deleteOneLogWithHttpInfo(param.id,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public deleteOneLog(param: LogApiDeleteOneLogRequest, options?: Configuration): Promise<boolean> {
+    public deleteOneLog(param: LogApiDeleteOneLogRequest, options?: ConfigurationOptions): Promise<boolean> {
         return this.api.deleteOneLog(param.id,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getAllLogsWithHttpInfo(param: LogApiGetAllLogsRequest = {}, options?: Configuration): Promise<HttpInfo<Array<LogItemDto>>> {
+    public getAllLogsWithHttpInfo(param: LogApiGetAllLogsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<Array<LogItemDto>>> {
         return this.api.getAllLogsWithHttpInfo( options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getAllLogs(param: LogApiGetAllLogsRequest = {}, options?: Configuration): Promise<Array<LogItemDto>> {
+    public getAllLogs(param: LogApiGetAllLogsRequest = {}, options?: ConfigurationOptions): Promise<Array<LogItemDto>> {
         return this.api.getAllLogs( options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getOneLogWithHttpInfo(param: LogApiGetOneLogRequest, options?: Configuration): Promise<HttpInfo<LogItemDto>> {
+    public getOneLogWithHttpInfo(param: LogApiGetOneLogRequest, options?: ConfigurationOptions): Promise<HttpInfo<LogItemDto>> {
         return this.api.getOneLogWithHttpInfo(param.id,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getOneLog(param: LogApiGetOneLogRequest, options?: Configuration): Promise<LogItemDto> {
+    public getOneLog(param: LogApiGetOneLogRequest, options?: ConfigurationOptions): Promise<LogItemDto> {
         return this.api.getOneLog(param.id,  options).toPromise();
     }
 
@@ -923,56 +924,56 @@ export class ObjectMessageApi {
     /**
      * @param param the request object
      */
-    public deleteOneMessageWithHttpInfo(param: MessageApiDeleteOneMessageRequest, options?: Configuration): Promise<HttpInfo<boolean>> {
+    public deleteOneMessageWithHttpInfo(param: MessageApiDeleteOneMessageRequest, options?: ConfigurationOptions): Promise<HttpInfo<boolean>> {
         return this.api.deleteOneMessageWithHttpInfo(param.id,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public deleteOneMessage(param: MessageApiDeleteOneMessageRequest, options?: Configuration): Promise<boolean> {
+    public deleteOneMessage(param: MessageApiDeleteOneMessageRequest, options?: ConfigurationOptions): Promise<boolean> {
         return this.api.deleteOneMessage(param.id,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getAllMessagesWithHttpInfo(param: MessageApiGetAllMessagesRequest = {}, options?: Configuration): Promise<HttpInfo<Array<MessageItemDto>>> {
+    public getAllMessagesWithHttpInfo(param: MessageApiGetAllMessagesRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<Array<MessageItemDto>>> {
         return this.api.getAllMessagesWithHttpInfo( options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getAllMessages(param: MessageApiGetAllMessagesRequest = {}, options?: Configuration): Promise<Array<MessageItemDto>> {
+    public getAllMessages(param: MessageApiGetAllMessagesRequest = {}, options?: ConfigurationOptions): Promise<Array<MessageItemDto>> {
         return this.api.getAllMessages( options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getOneMessageWithHttpInfo(param: MessageApiGetOneMessageRequest, options?: Configuration): Promise<HttpInfo<MessageItemDto>> {
+    public getOneMessageWithHttpInfo(param: MessageApiGetOneMessageRequest, options?: ConfigurationOptions): Promise<HttpInfo<MessageItemDto>> {
         return this.api.getOneMessageWithHttpInfo(param.id,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getOneMessage(param: MessageApiGetOneMessageRequest, options?: Configuration): Promise<MessageItemDto> {
+    public getOneMessage(param: MessageApiGetOneMessageRequest, options?: ConfigurationOptions): Promise<MessageItemDto> {
         return this.api.getOneMessage(param.id,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public postOneMessageWithHttpInfo(param: MessageApiPostOneMessageRequest = {}, options?: Configuration): Promise<HttpInfo<boolean>> {
+    public postOneMessageWithHttpInfo(param: MessageApiPostOneMessageRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<boolean>> {
         return this.api.postOneMessageWithHttpInfo(param.messagePostDto,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public postOneMessage(param: MessageApiPostOneMessageRequest = {}, options?: Configuration): Promise<boolean> {
+    public postOneMessage(param: MessageApiPostOneMessageRequest = {}, options?: ConfigurationOptions): Promise<boolean> {
         return this.api.postOneMessage(param.messagePostDto,  options).toPromise();
     }
 
@@ -1042,84 +1043,84 @@ export class ObjectNotificationApi {
     /**
      * @param param the request object
      */
-    public deleteOneNotificationWithHttpInfo(param: NotificationApiDeleteOneNotificationRequest, options?: Configuration): Promise<HttpInfo<boolean>> {
+    public deleteOneNotificationWithHttpInfo(param: NotificationApiDeleteOneNotificationRequest, options?: ConfigurationOptions): Promise<HttpInfo<boolean>> {
         return this.api.deleteOneNotificationWithHttpInfo(param.id,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public deleteOneNotification(param: NotificationApiDeleteOneNotificationRequest, options?: Configuration): Promise<boolean> {
+    public deleteOneNotification(param: NotificationApiDeleteOneNotificationRequest, options?: ConfigurationOptions): Promise<boolean> {
         return this.api.deleteOneNotification(param.id,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public deleteOneNotificationConfigWithHttpInfo(param: NotificationApiDeleteOneNotificationConfigRequest = {}, options?: Configuration): Promise<HttpInfo<boolean>> {
+    public deleteOneNotificationConfigWithHttpInfo(param: NotificationApiDeleteOneNotificationConfigRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<boolean>> {
         return this.api.deleteOneNotificationConfigWithHttpInfo(param.body,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public deleteOneNotificationConfig(param: NotificationApiDeleteOneNotificationConfigRequest = {}, options?: Configuration): Promise<boolean> {
+    public deleteOneNotificationConfig(param: NotificationApiDeleteOneNotificationConfigRequest = {}, options?: ConfigurationOptions): Promise<boolean> {
         return this.api.deleteOneNotificationConfig(param.body,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getAllNotificationConfigsWithHttpInfo(param: NotificationApiGetAllNotificationConfigsRequest = {}, options?: Configuration): Promise<HttpInfo<Array<WSConfigItemDto>>> {
+    public getAllNotificationConfigsWithHttpInfo(param: NotificationApiGetAllNotificationConfigsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<Array<WSConfigItemDto>>> {
         return this.api.getAllNotificationConfigsWithHttpInfo( options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getAllNotificationConfigs(param: NotificationApiGetAllNotificationConfigsRequest = {}, options?: Configuration): Promise<Array<WSConfigItemDto>> {
+    public getAllNotificationConfigs(param: NotificationApiGetAllNotificationConfigsRequest = {}, options?: ConfigurationOptions): Promise<Array<WSConfigItemDto>> {
         return this.api.getAllNotificationConfigs( options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getAllNotificationsWithHttpInfo(param: NotificationApiGetAllNotificationsRequest = {}, options?: Configuration): Promise<HttpInfo<Array<WSNotificationDto>>> {
+    public getAllNotificationsWithHttpInfo(param: NotificationApiGetAllNotificationsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<Array<WSNotificationDto>>> {
         return this.api.getAllNotificationsWithHttpInfo(param.unreadOnly,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getAllNotifications(param: NotificationApiGetAllNotificationsRequest = {}, options?: Configuration): Promise<Array<WSNotificationDto>> {
+    public getAllNotifications(param: NotificationApiGetAllNotificationsRequest = {}, options?: ConfigurationOptions): Promise<Array<WSNotificationDto>> {
         return this.api.getAllNotifications(param.unreadOnly,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getOneNotificationWithHttpInfo(param: NotificationApiGetOneNotificationRequest, options?: Configuration): Promise<HttpInfo<WSNotificationDto>> {
+    public getOneNotificationWithHttpInfo(param: NotificationApiGetOneNotificationRequest, options?: ConfigurationOptions): Promise<HttpInfo<WSNotificationDto>> {
         return this.api.getOneNotificationWithHttpInfo(param.id,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getOneNotification(param: NotificationApiGetOneNotificationRequest, options?: Configuration): Promise<WSNotificationDto> {
+    public getOneNotification(param: NotificationApiGetOneNotificationRequest, options?: ConfigurationOptions): Promise<WSNotificationDto> {
         return this.api.getOneNotification(param.id,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public updateOneNotificationConfigWithHttpInfo(param: NotificationApiUpdateOneNotificationConfigRequest = {}, options?: Configuration): Promise<HttpInfo<WSConfigItemDto>> {
+    public updateOneNotificationConfigWithHttpInfo(param: NotificationApiUpdateOneNotificationConfigRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<WSConfigItemDto>> {
         return this.api.updateOneNotificationConfigWithHttpInfo(param.wSConfigPutDto,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public updateOneNotificationConfig(param: NotificationApiUpdateOneNotificationConfigRequest = {}, options?: Configuration): Promise<WSConfigItemDto> {
+    public updateOneNotificationConfig(param: NotificationApiUpdateOneNotificationConfigRequest = {}, options?: ConfigurationOptions): Promise<WSConfigItemDto> {
         return this.api.updateOneNotificationConfig(param.wSConfigPutDto,  options).toPromise();
     }
 
@@ -1387,196 +1388,196 @@ export class ObjectRepoApi {
     /**
      * @param param the request object
      */
-    public apiReposGetWithHttpInfo(param: RepoApiApiReposGetRequest = {}, options?: Configuration): Promise<HttpInfo<Array<RepoPointDto>>> {
+    public apiReposGetWithHttpInfo(param: RepoApiApiReposGetRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<Array<RepoPointDto>>> {
         return this.api.apiReposGetWithHttpInfo( options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public apiReposGet(param: RepoApiApiReposGetRequest = {}, options?: Configuration): Promise<Array<RepoPointDto>> {
+    public apiReposGet(param: RepoApiApiReposGetRequest = {}, options?: ConfigurationOptions): Promise<Array<RepoPointDto>> {
         return this.api.apiReposGet( options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public apiReposPointUserPointNameDeleteWithHttpInfo(param: RepoApiApiReposPointUserPointNameDeleteRequest, options?: Configuration): Promise<HttpInfo<boolean>> {
+    public apiReposPointUserPointNameDeleteWithHttpInfo(param: RepoApiApiReposPointUserPointNameDeleteRequest, options?: ConfigurationOptions): Promise<HttpInfo<boolean>> {
         return this.api.apiReposPointUserPointNameDeleteWithHttpInfo(param.pointUser, param.pointName,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public apiReposPointUserPointNameDelete(param: RepoApiApiReposPointUserPointNameDeleteRequest, options?: Configuration): Promise<boolean> {
+    public apiReposPointUserPointNameDelete(param: RepoApiApiReposPointUserPointNameDeleteRequest, options?: ConfigurationOptions): Promise<boolean> {
         return this.api.apiReposPointUserPointNameDelete(param.pointUser, param.pointName,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public apiReposPointUserPointNameGetWithHttpInfo(param: RepoApiApiReposPointUserPointNameGetRequest, options?: Configuration): Promise<HttpInfo<RepoPointDto>> {
+    public apiReposPointUserPointNameGetWithHttpInfo(param: RepoApiApiReposPointUserPointNameGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<RepoPointDto>> {
         return this.api.apiReposPointUserPointNameGetWithHttpInfo(param.pointUser, param.pointName,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public apiReposPointUserPointNameGet(param: RepoApiApiReposPointUserPointNameGetRequest, options?: Configuration): Promise<RepoPointDto> {
+    public apiReposPointUserPointNameGet(param: RepoApiApiReposPointUserPointNameGetRequest, options?: ConfigurationOptions): Promise<RepoPointDto> {
         return this.api.apiReposPointUserPointNameGet(param.pointUser, param.pointName,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public apiReposPointUserPointNamePutWithHttpInfo(param: RepoApiApiReposPointUserPointNamePutRequest, options?: Configuration): Promise<HttpInfo<RepoPointDto>> {
+    public apiReposPointUserPointNamePutWithHttpInfo(param: RepoApiApiReposPointUserPointNamePutRequest, options?: ConfigurationOptions): Promise<HttpInfo<RepoPointDto>> {
         return this.api.apiReposPointUserPointNamePutWithHttpInfo(param.pointUser, param.pointName, param.maxBytes,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public apiReposPointUserPointNamePut(param: RepoApiApiReposPointUserPointNamePutRequest, options?: Configuration): Promise<RepoPointDto> {
+    public apiReposPointUserPointNamePut(param: RepoApiApiReposPointUserPointNamePutRequest, options?: ConfigurationOptions): Promise<RepoPointDto> {
         return this.api.apiReposPointUserPointNamePut(param.pointUser, param.pointName, param.maxBytes,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public apiReposPointUserPointNameSharesDeleteWithHttpInfo(param: RepoApiApiReposPointUserPointNameSharesDeleteRequest, options?: Configuration): Promise<HttpInfo<boolean>> {
+    public apiReposPointUserPointNameSharesDeleteWithHttpInfo(param: RepoApiApiReposPointUserPointNameSharesDeleteRequest, options?: ConfigurationOptions): Promise<HttpInfo<boolean>> {
         return this.api.apiReposPointUserPointNameSharesDeleteWithHttpInfo(param.pointUser, param.pointName, param.user,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public apiReposPointUserPointNameSharesDelete(param: RepoApiApiReposPointUserPointNameSharesDeleteRequest, options?: Configuration): Promise<boolean> {
+    public apiReposPointUserPointNameSharesDelete(param: RepoApiApiReposPointUserPointNameSharesDeleteRequest, options?: ConfigurationOptions): Promise<boolean> {
         return this.api.apiReposPointUserPointNameSharesDelete(param.pointUser, param.pointName, param.user,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public apiReposPointUserPointNameSharesGetWithHttpInfo(param: RepoApiApiReposPointUserPointNameSharesGetRequest, options?: Configuration): Promise<HttpInfo<Array<RepoPointShareDto>>> {
+    public apiReposPointUserPointNameSharesGetWithHttpInfo(param: RepoApiApiReposPointUserPointNameSharesGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<Array<RepoPointShareDto>>> {
         return this.api.apiReposPointUserPointNameSharesGetWithHttpInfo(param.pointUser, param.pointName, param.user,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public apiReposPointUserPointNameSharesGet(param: RepoApiApiReposPointUserPointNameSharesGetRequest, options?: Configuration): Promise<Array<RepoPointShareDto>> {
+    public apiReposPointUserPointNameSharesGet(param: RepoApiApiReposPointUserPointNameSharesGetRequest, options?: ConfigurationOptions): Promise<Array<RepoPointShareDto>> {
         return this.api.apiReposPointUserPointNameSharesGet(param.pointUser, param.pointName, param.user,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public apiReposPointUserPointNameSharesPutWithHttpInfo(param: RepoApiApiReposPointUserPointNameSharesPutRequest, options?: Configuration): Promise<HttpInfo<RepoPointShareDto>> {
+    public apiReposPointUserPointNameSharesPutWithHttpInfo(param: RepoApiApiReposPointUserPointNameSharesPutRequest, options?: ConfigurationOptions): Promise<HttpInfo<RepoPointShareDto>> {
         return this.api.apiReposPointUserPointNameSharesPutWithHttpInfo(param.pointUser, param.pointName, param.repoPointShareDto,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public apiReposPointUserPointNameSharesPut(param: RepoApiApiReposPointUserPointNameSharesPutRequest, options?: Configuration): Promise<RepoPointShareDto> {
+    public apiReposPointUserPointNameSharesPut(param: RepoApiApiReposPointUserPointNameSharesPutRequest, options?: ConfigurationOptions): Promise<RepoPointShareDto> {
         return this.api.apiReposPointUserPointNameSharesPut(param.pointUser, param.pointName, param.repoPointShareDto,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public apiReposPostWithHttpInfo(param: RepoApiApiReposPostRequest = {}, options?: Configuration): Promise<HttpInfo<RepoPointDto>> {
+    public apiReposPostWithHttpInfo(param: RepoApiApiReposPostRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<RepoPointDto>> {
         return this.api.apiReposPostWithHttpInfo(param.name, param.maxBytes,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public apiReposPost(param: RepoApiApiReposPostRequest = {}, options?: Configuration): Promise<RepoPointDto> {
+    public apiReposPost(param: RepoApiApiReposPostRequest = {}, options?: ConfigurationOptions): Promise<RepoPointDto> {
         return this.api.apiReposPost(param.name, param.maxBytes,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public browseFilesForRepoWithHttpInfo(param: RepoApiBrowseFilesForRepoRequest = {}, options?: Configuration): Promise<HttpInfo<Array<FileDto>>> {
+    public browseFilesForRepoWithHttpInfo(param: RepoApiBrowseFilesForRepoRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<Array<FileDto>>> {
         return this.api.browseFilesForRepoWithHttpInfo(param.dataPointBrowseGetDto,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public browseFilesForRepo(param: RepoApiBrowseFilesForRepoRequest = {}, options?: Configuration): Promise<Array<FileDto>> {
+    public browseFilesForRepo(param: RepoApiBrowseFilesForRepoRequest = {}, options?: ConfigurationOptions): Promise<Array<FileDto>> {
         return this.api.browseFilesForRepo(param.dataPointBrowseGetDto,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public deleteOneSnapshotForRepoWithHttpInfo(param: RepoApiDeleteOneSnapshotForRepoRequest, options?: Configuration): Promise<HttpInfo<boolean>> {
+    public deleteOneSnapshotForRepoWithHttpInfo(param: RepoApiDeleteOneSnapshotForRepoRequest, options?: ConfigurationOptions): Promise<HttpInfo<boolean>> {
         return this.api.deleteOneSnapshotForRepoWithHttpInfo(param.pointUser, param.pointName, param.id,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public deleteOneSnapshotForRepo(param: RepoApiDeleteOneSnapshotForRepoRequest, options?: Configuration): Promise<boolean> {
+    public deleteOneSnapshotForRepo(param: RepoApiDeleteOneSnapshotForRepoRequest, options?: ConfigurationOptions): Promise<boolean> {
         return this.api.deleteOneSnapshotForRepo(param.pointUser, param.pointName, param.id,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public dumpFileForRepoWithHttpInfo(param: RepoApiDumpFileForRepoRequest = {}, options?: Configuration): Promise<HttpInfo<FileOutputDto>> {
+    public dumpFileForRepoWithHttpInfo(param: RepoApiDumpFileForRepoRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<FileOutputDto>> {
         return this.api.dumpFileForRepoWithHttpInfo(param.body,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public dumpFileForRepo(param: RepoApiDumpFileForRepoRequest = {}, options?: Configuration): Promise<FileOutputDto> {
+    public dumpFileForRepo(param: RepoApiDumpFileForRepoRequest = {}, options?: ConfigurationOptions): Promise<FileOutputDto> {
         return this.api.dumpFileForRepo(param.body,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getAllJobsForRepoWithHttpInfo(param: RepoApiGetAllJobsForRepoRequest, options?: Configuration): Promise<HttpInfo<Array<RepoDataJobDto>>> {
+    public getAllJobsForRepoWithHttpInfo(param: RepoApiGetAllJobsForRepoRequest, options?: ConfigurationOptions): Promise<HttpInfo<Array<RepoDataJobDto>>> {
         return this.api.getAllJobsForRepoWithHttpInfo(param.pointUser, param.pointName,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getAllJobsForRepo(param: RepoApiGetAllJobsForRepoRequest, options?: Configuration): Promise<Array<RepoDataJobDto>> {
+    public getAllJobsForRepo(param: RepoApiGetAllJobsForRepoRequest, options?: ConfigurationOptions): Promise<Array<RepoDataJobDto>> {
         return this.api.getAllJobsForRepo(param.pointUser, param.pointName,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getAllSnapshotsForRepoWithHttpInfo(param: RepoApiGetAllSnapshotsForRepoRequest, options?: Configuration): Promise<HttpInfo<Array<SnapshotDto>>> {
+    public getAllSnapshotsForRepoWithHttpInfo(param: RepoApiGetAllSnapshotsForRepoRequest, options?: ConfigurationOptions): Promise<HttpInfo<Array<SnapshotDto>>> {
         return this.api.getAllSnapshotsForRepoWithHttpInfo(param.pointUser, param.pointName,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getAllSnapshotsForRepo(param: RepoApiGetAllSnapshotsForRepoRequest, options?: Configuration): Promise<Array<SnapshotDto>> {
+    public getAllSnapshotsForRepo(param: RepoApiGetAllSnapshotsForRepoRequest, options?: ConfigurationOptions): Promise<Array<SnapshotDto>> {
         return this.api.getAllSnapshotsForRepo(param.pointUser, param.pointName,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getOneSnapshotForRepoWithHttpInfo(param: RepoApiGetOneSnapshotForRepoRequest, options?: Configuration): Promise<HttpInfo<SnapshotDto>> {
+    public getOneSnapshotForRepoWithHttpInfo(param: RepoApiGetOneSnapshotForRepoRequest, options?: ConfigurationOptions): Promise<HttpInfo<SnapshotDto>> {
         return this.api.getOneSnapshotForRepoWithHttpInfo(param.pointUser, param.pointName, param.id,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getOneSnapshotForRepo(param: RepoApiGetOneSnapshotForRepoRequest, options?: Configuration): Promise<SnapshotDto> {
+    public getOneSnapshotForRepo(param: RepoApiGetOneSnapshotForRepoRequest, options?: ConfigurationOptions): Promise<SnapshotDto> {
         return this.api.getOneSnapshotForRepo(param.pointUser, param.pointName, param.id,  options).toPromise();
     }
 
@@ -1601,7 +1602,7 @@ export interface UserApiDeleteOneUserRequest {
      * @type string
      * @memberof UserApideleteOneUser
      */
-    userName?: string
+    userName: string
 }
 
 export interface UserApiDisableOnePermissionForUserRequest {
@@ -1720,140 +1721,140 @@ export class ObjectUserApi {
     /**
      * @param param the request object
      */
-    public createOneUserWithHttpInfo(param: UserApiCreateOneUserRequest = {}, options?: Configuration): Promise<HttpInfo<UserSummaryDto>> {
+    public createOneUserWithHttpInfo(param: UserApiCreateOneUserRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<UserSummaryDto>> {
         return this.api.createOneUserWithHttpInfo(param.userCreateDto,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public createOneUser(param: UserApiCreateOneUserRequest = {}, options?: Configuration): Promise<UserSummaryDto> {
+    public createOneUser(param: UserApiCreateOneUserRequest = {}, options?: ConfigurationOptions): Promise<UserSummaryDto> {
         return this.api.createOneUser(param.userCreateDto,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public deleteOneUserWithHttpInfo(param: UserApiDeleteOneUserRequest = {}, options?: Configuration): Promise<HttpInfo<boolean>> {
+    public deleteOneUserWithHttpInfo(param: UserApiDeleteOneUserRequest, options?: ConfigurationOptions): Promise<HttpInfo<boolean>> {
         return this.api.deleteOneUserWithHttpInfo(param.userName,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public deleteOneUser(param: UserApiDeleteOneUserRequest = {}, options?: Configuration): Promise<boolean> {
+    public deleteOneUser(param: UserApiDeleteOneUserRequest, options?: ConfigurationOptions): Promise<boolean> {
         return this.api.deleteOneUser(param.userName,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public disableOnePermissionForUserWithHttpInfo(param: UserApiDisableOnePermissionForUserRequest, options?: Configuration): Promise<HttpInfo<boolean>> {
+    public disableOnePermissionForUserWithHttpInfo(param: UserApiDisableOnePermissionForUserRequest, options?: ConfigurationOptions): Promise<HttpInfo<boolean>> {
         return this.api.disableOnePermissionForUserWithHttpInfo(param.userName, param.permissionName,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public disableOnePermissionForUser(param: UserApiDisableOnePermissionForUserRequest, options?: Configuration): Promise<boolean> {
+    public disableOnePermissionForUser(param: UserApiDisableOnePermissionForUserRequest, options?: ConfigurationOptions): Promise<boolean> {
         return this.api.disableOnePermissionForUser(param.userName, param.permissionName,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public enableOnePermissionForUserWithHttpInfo(param: UserApiEnableOnePermissionForUserRequest, options?: Configuration): Promise<HttpInfo<boolean>> {
+    public enableOnePermissionForUserWithHttpInfo(param: UserApiEnableOnePermissionForUserRequest, options?: ConfigurationOptions): Promise<HttpInfo<boolean>> {
         return this.api.enableOnePermissionForUserWithHttpInfo(param.userName, param.permissionName,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public enableOnePermissionForUser(param: UserApiEnableOnePermissionForUserRequest, options?: Configuration): Promise<boolean> {
+    public enableOnePermissionForUser(param: UserApiEnableOnePermissionForUserRequest, options?: ConfigurationOptions): Promise<boolean> {
         return this.api.enableOnePermissionForUser(param.userName, param.permissionName,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getAllPermissionsForUserWithHttpInfo(param: UserApiGetAllPermissionsForUserRequest, options?: Configuration): Promise<HttpInfo<Array<UserPermission>>> {
+    public getAllPermissionsForUserWithHttpInfo(param: UserApiGetAllPermissionsForUserRequest, options?: ConfigurationOptions): Promise<HttpInfo<Array<UserPermission>>> {
         return this.api.getAllPermissionsForUserWithHttpInfo(param.userName,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getAllPermissionsForUser(param: UserApiGetAllPermissionsForUserRequest, options?: Configuration): Promise<Array<UserPermission>> {
+    public getAllPermissionsForUser(param: UserApiGetAllPermissionsForUserRequest, options?: ConfigurationOptions): Promise<Array<UserPermission>> {
         return this.api.getAllPermissionsForUser(param.userName,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getAllUsersWithHttpInfo(param: UserApiGetAllUsersRequest = {}, options?: Configuration): Promise<HttpInfo<Array<UserSummaryDto>>> {
+    public getAllUsersWithHttpInfo(param: UserApiGetAllUsersRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<Array<UserSummaryDto>>> {
         return this.api.getAllUsersWithHttpInfo( options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getAllUsers(param: UserApiGetAllUsersRequest = {}, options?: Configuration): Promise<Array<UserSummaryDto>> {
+    public getAllUsers(param: UserApiGetAllUsersRequest = {}, options?: ConfigurationOptions): Promise<Array<UserSummaryDto>> {
         return this.api.getAllUsers( options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getOnePermissionForUserWithHttpInfo(param: UserApiGetOnePermissionForUserRequest, options?: Configuration): Promise<HttpInfo<UserPermission>> {
+    public getOnePermissionForUserWithHttpInfo(param: UserApiGetOnePermissionForUserRequest, options?: ConfigurationOptions): Promise<HttpInfo<UserPermission>> {
         return this.api.getOnePermissionForUserWithHttpInfo(param.userName, param.permissionName,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getOnePermissionForUser(param: UserApiGetOnePermissionForUserRequest, options?: Configuration): Promise<UserPermission> {
+    public getOnePermissionForUser(param: UserApiGetOnePermissionForUserRequest, options?: ConfigurationOptions): Promise<UserPermission> {
         return this.api.getOnePermissionForUser(param.userName, param.permissionName,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getOneUserWithHttpInfo(param: UserApiGetOneUserRequest, options?: Configuration): Promise<HttpInfo<UserSummaryDto>> {
+    public getOneUserWithHttpInfo(param: UserApiGetOneUserRequest, options?: ConfigurationOptions): Promise<HttpInfo<UserSummaryDto>> {
         return this.api.getOneUserWithHttpInfo(param.userName,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getOneUser(param: UserApiGetOneUserRequest, options?: Configuration): Promise<UserSummaryDto> {
+    public getOneUser(param: UserApiGetOneUserRequest, options?: ConfigurationOptions): Promise<UserSummaryDto> {
         return this.api.getOneUser(param.userName,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public updateAllPermissionsForUserWithHttpInfo(param: UserApiUpdateAllPermissionsForUserRequest, options?: Configuration): Promise<HttpInfo<Array<UserPermission>>> {
+    public updateAllPermissionsForUserWithHttpInfo(param: UserApiUpdateAllPermissionsForUserRequest, options?: ConfigurationOptions): Promise<HttpInfo<Array<UserPermission>>> {
         return this.api.updateAllPermissionsForUserWithHttpInfo(param.userName, param.userPermissionDto,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public updateAllPermissionsForUser(param: UserApiUpdateAllPermissionsForUserRequest, options?: Configuration): Promise<Array<UserPermission>> {
+    public updateAllPermissionsForUser(param: UserApiUpdateAllPermissionsForUserRequest, options?: ConfigurationOptions): Promise<Array<UserPermission>> {
         return this.api.updateAllPermissionsForUser(param.userName, param.userPermissionDto,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public updateOneUserWithHttpInfo(param: UserApiUpdateOneUserRequest, options?: Configuration): Promise<HttpInfo<UserSummaryDto>> {
+    public updateOneUserWithHttpInfo(param: UserApiUpdateOneUserRequest, options?: ConfigurationOptions): Promise<HttpInfo<UserSummaryDto>> {
         return this.api.updateOneUserWithHttpInfo(param.userName, param.userPutDto,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public updateOneUser(param: UserApiUpdateOneUserRequest, options?: Configuration): Promise<UserSummaryDto> {
+    public updateOneUser(param: UserApiUpdateOneUserRequest, options?: ConfigurationOptions): Promise<UserSummaryDto> {
         return this.api.updateOneUser(param.userName, param.userPutDto,  options).toPromise();
     }
 

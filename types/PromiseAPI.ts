@@ -1,5 +1,6 @@
 import { ResponseContext, RequestContext, HttpFile, HttpInfo } from '../http/http';
-import { Configuration} from '../configuration'
+import { Configuration, ConfigurationOptions, PromiseConfigurationOptions } from '../configuration'
+import { PromiseMiddleware, Middleware, PromiseMiddlewareWrapper } from '../middleware';
 
 import { AuthInputDto } from '../models/AuthInputDto';
 import { AuthOutputDto } from '../models/AuthOutputDto';
@@ -56,16 +57,40 @@ export class PromiseAuthApi {
     /**
      * @param [authInputDto]
      */
-    public authenticateWithHttpInfo(authInputDto?: AuthInputDto, _options?: Configuration): Promise<HttpInfo<AuthOutputDto>> {
-        const result = this.api.authenticateWithHttpInfo(authInputDto, _options);
+    public authenticateWithHttpInfo(authInputDto?: AuthInputDto, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AuthOutputDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.authenticateWithHttpInfo(authInputDto, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param [authInputDto]
      */
-    public authenticate(authInputDto?: AuthInputDto, _options?: Configuration): Promise<AuthOutputDto> {
-        const result = this.api.authenticate(authInputDto, _options);
+    public authenticate(authInputDto?: AuthInputDto, _options?: PromiseConfigurationOptions): Promise<AuthOutputDto> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.authenticate(authInputDto, observableOptions);
         return result.toPromise();
     }
 
@@ -91,46 +116,118 @@ export class PromiseAutoJobApi {
     /**
      * @param [autoJobGetDto]
      */
-    public deleteOneAutoJobWithHttpInfo(autoJobGetDto?: AutoJobGetDto, _options?: Configuration): Promise<HttpInfo<boolean>> {
-        const result = this.api.deleteOneAutoJobWithHttpInfo(autoJobGetDto, _options);
+    public deleteOneAutoJobWithHttpInfo(autoJobGetDto?: AutoJobGetDto, _options?: PromiseConfigurationOptions): Promise<HttpInfo<boolean>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.deleteOneAutoJobWithHttpInfo(autoJobGetDto, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param [autoJobGetDto]
      */
-    public deleteOneAutoJob(autoJobGetDto?: AutoJobGetDto, _options?: Configuration): Promise<boolean> {
-        const result = this.api.deleteOneAutoJob(autoJobGetDto, _options);
+    public deleteOneAutoJob(autoJobGetDto?: AutoJobGetDto, _options?: PromiseConfigurationOptions): Promise<boolean> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.deleteOneAutoJob(autoJobGetDto, observableOptions);
         return result.toPromise();
     }
 
     /**
      */
-    public getAllAutoJobsWithHttpInfo(_options?: Configuration): Promise<HttpInfo<Array<AutoJobConfigDto>>> {
-        const result = this.api.getAllAutoJobsWithHttpInfo(_options);
+    public getAllAutoJobsWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<Array<AutoJobConfigDto>>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getAllAutoJobsWithHttpInfo(observableOptions);
         return result.toPromise();
     }
 
     /**
      */
-    public getAllAutoJobs(_options?: Configuration): Promise<Array<AutoJobConfigDto>> {
-        const result = this.api.getAllAutoJobs(_options);
+    public getAllAutoJobs(_options?: PromiseConfigurationOptions): Promise<Array<AutoJobConfigDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getAllAutoJobs(observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param [autoJobPutDto]
      */
-    public updateOneAutoJobWithHttpInfo(autoJobPutDto?: AutoJobPutDto, _options?: Configuration): Promise<HttpInfo<AutoJobConfigDto>> {
-        const result = this.api.updateOneAutoJobWithHttpInfo(autoJobPutDto, _options);
+    public updateOneAutoJobWithHttpInfo(autoJobPutDto?: AutoJobPutDto, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AutoJobConfigDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.updateOneAutoJobWithHttpInfo(autoJobPutDto, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param [autoJobPutDto]
      */
-    public updateOneAutoJob(autoJobPutDto?: AutoJobPutDto, _options?: Configuration): Promise<AutoJobConfigDto> {
-        const result = this.api.updateOneAutoJob(autoJobPutDto, _options);
+    public updateOneAutoJob(autoJobPutDto?: AutoJobPutDto, _options?: PromiseConfigurationOptions): Promise<AutoJobConfigDto> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.updateOneAutoJob(autoJobPutDto, observableOptions);
         return result.toPromise();
     }
 
@@ -155,31 +252,79 @@ export class PromiseConfigApi {
 
     /**
      */
-    public getGlobalConfigWithHttpInfo(_options?: Configuration): Promise<HttpInfo<DynamicConfigDto>> {
-        const result = this.api.getGlobalConfigWithHttpInfo(_options);
+    public getGlobalConfigWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<DynamicConfigDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getGlobalConfigWithHttpInfo(observableOptions);
         return result.toPromise();
     }
 
     /**
      */
-    public getGlobalConfig(_options?: Configuration): Promise<DynamicConfigDto> {
-        const result = this.api.getGlobalConfig(_options);
+    public getGlobalConfig(_options?: PromiseConfigurationOptions): Promise<DynamicConfigDto> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getGlobalConfig(observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param [globalConfigPutDto]
      */
-    public updateGlobalConfigWithHttpInfo(globalConfigPutDto?: GlobalConfigPutDto, _options?: Configuration): Promise<HttpInfo<DynamicConfigDto>> {
-        const result = this.api.updateGlobalConfigWithHttpInfo(globalConfigPutDto, _options);
+    public updateGlobalConfigWithHttpInfo(globalConfigPutDto?: GlobalConfigPutDto, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DynamicConfigDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.updateGlobalConfigWithHttpInfo(globalConfigPutDto, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param [globalConfigPutDto]
      */
-    public updateGlobalConfig(globalConfigPutDto?: GlobalConfigPutDto, _options?: Configuration): Promise<DynamicConfigDto> {
-        const result = this.api.updateGlobalConfig(globalConfigPutDto, _options);
+    public updateGlobalConfig(globalConfigPutDto?: GlobalConfigPutDto, _options?: PromiseConfigurationOptions): Promise<DynamicConfigDto> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.updateGlobalConfig(globalConfigPutDto, observableOptions);
         return result.toPromise();
     }
 
@@ -204,15 +349,39 @@ export class PromiseDataApi {
 
     /**
      */
-    public apiDatasGetWithHttpInfo(_options?: Configuration): Promise<HttpInfo<Array<DataPointDto>>> {
-        const result = this.api.apiDatasGetWithHttpInfo(_options);
+    public apiDatasGetWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<Array<DataPointDto>>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.apiDatasGetWithHttpInfo(observableOptions);
         return result.toPromise();
     }
 
     /**
      */
-    public apiDatasGet(_options?: Configuration): Promise<Array<DataPointDto>> {
-        const result = this.api.apiDatasGet(_options);
+    public apiDatasGet(_options?: PromiseConfigurationOptions): Promise<Array<DataPointDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.apiDatasGet(observableOptions);
         return result.toPromise();
     }
 
@@ -220,8 +389,20 @@ export class PromiseDataApi {
      * @param pointUser
      * @param pointName
      */
-    public apiDatasPointUserPointNameDeleteWithHttpInfo(pointUser: string, pointName: string, _options?: Configuration): Promise<HttpInfo<boolean>> {
-        const result = this.api.apiDatasPointUserPointNameDeleteWithHttpInfo(pointUser, pointName, _options);
+    public apiDatasPointUserPointNameDeleteWithHttpInfo(pointUser: string, pointName: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<boolean>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.apiDatasPointUserPointNameDeleteWithHttpInfo(pointUser, pointName, observableOptions);
         return result.toPromise();
     }
 
@@ -229,8 +410,20 @@ export class PromiseDataApi {
      * @param pointUser
      * @param pointName
      */
-    public apiDatasPointUserPointNameDelete(pointUser: string, pointName: string, _options?: Configuration): Promise<boolean> {
-        const result = this.api.apiDatasPointUserPointNameDelete(pointUser, pointName, _options);
+    public apiDatasPointUserPointNameDelete(pointUser: string, pointName: string, _options?: PromiseConfigurationOptions): Promise<boolean> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.apiDatasPointUserPointNameDelete(pointUser, pointName, observableOptions);
         return result.toPromise();
     }
 
@@ -238,8 +431,20 @@ export class PromiseDataApi {
      * @param pointUser
      * @param pointName
      */
-    public apiDatasPointUserPointNameGetWithHttpInfo(pointUser: string, pointName: string, _options?: Configuration): Promise<HttpInfo<DataPointDto>> {
-        const result = this.api.apiDatasPointUserPointNameGetWithHttpInfo(pointUser, pointName, _options);
+    public apiDatasPointUserPointNameGetWithHttpInfo(pointUser: string, pointName: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DataPointDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.apiDatasPointUserPointNameGetWithHttpInfo(pointUser, pointName, observableOptions);
         return result.toPromise();
     }
 
@@ -247,8 +452,20 @@ export class PromiseDataApi {
      * @param pointUser
      * @param pointName
      */
-    public apiDatasPointUserPointNameGet(pointUser: string, pointName: string, _options?: Configuration): Promise<DataPointDto> {
-        const result = this.api.apiDatasPointUserPointNameGet(pointUser, pointName, _options);
+    public apiDatasPointUserPointNameGet(pointUser: string, pointName: string, _options?: PromiseConfigurationOptions): Promise<DataPointDto> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.apiDatasPointUserPointNameGet(pointUser, pointName, observableOptions);
         return result.toPromise();
     }
 
@@ -257,8 +474,20 @@ export class PromiseDataApi {
      * @param pointName
      * @param [maxBytes]
      */
-    public apiDatasPointUserPointNamePutWithHttpInfo(pointUser: string, pointName: string, maxBytes?: number, _options?: Configuration): Promise<HttpInfo<DataPointDto>> {
-        const result = this.api.apiDatasPointUserPointNamePutWithHttpInfo(pointUser, pointName, maxBytes, _options);
+    public apiDatasPointUserPointNamePutWithHttpInfo(pointUser: string, pointName: string, maxBytes?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DataPointDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.apiDatasPointUserPointNamePutWithHttpInfo(pointUser, pointName, maxBytes, observableOptions);
         return result.toPromise();
     }
 
@@ -267,8 +496,20 @@ export class PromiseDataApi {
      * @param pointName
      * @param [maxBytes]
      */
-    public apiDatasPointUserPointNamePut(pointUser: string, pointName: string, maxBytes?: number, _options?: Configuration): Promise<DataPointDto> {
-        const result = this.api.apiDatasPointUserPointNamePut(pointUser, pointName, maxBytes, _options);
+    public apiDatasPointUserPointNamePut(pointUser: string, pointName: string, maxBytes?: number, _options?: PromiseConfigurationOptions): Promise<DataPointDto> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.apiDatasPointUserPointNamePut(pointUser, pointName, maxBytes, observableOptions);
         return result.toPromise();
     }
 
@@ -277,8 +518,20 @@ export class PromiseDataApi {
      * @param pointName
      * @param [user]
      */
-    public apiDatasPointUserPointNameSharesDeleteWithHttpInfo(pointUser: string, pointName: string, user?: string, _options?: Configuration): Promise<HttpInfo<boolean>> {
-        const result = this.api.apiDatasPointUserPointNameSharesDeleteWithHttpInfo(pointUser, pointName, user, _options);
+    public apiDatasPointUserPointNameSharesDeleteWithHttpInfo(pointUser: string, pointName: string, user?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<boolean>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.apiDatasPointUserPointNameSharesDeleteWithHttpInfo(pointUser, pointName, user, observableOptions);
         return result.toPromise();
     }
 
@@ -287,8 +540,20 @@ export class PromiseDataApi {
      * @param pointName
      * @param [user]
      */
-    public apiDatasPointUserPointNameSharesDelete(pointUser: string, pointName: string, user?: string, _options?: Configuration): Promise<boolean> {
-        const result = this.api.apiDatasPointUserPointNameSharesDelete(pointUser, pointName, user, _options);
+    public apiDatasPointUserPointNameSharesDelete(pointUser: string, pointName: string, user?: string, _options?: PromiseConfigurationOptions): Promise<boolean> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.apiDatasPointUserPointNameSharesDelete(pointUser, pointName, user, observableOptions);
         return result.toPromise();
     }
 
@@ -297,8 +562,20 @@ export class PromiseDataApi {
      * @param pointName
      * @param [user]
      */
-    public apiDatasPointUserPointNameSharesGetWithHttpInfo(pointUser: string, pointName: string, user?: string, _options?: Configuration): Promise<HttpInfo<Array<DataPointShareDto>>> {
-        const result = this.api.apiDatasPointUserPointNameSharesGetWithHttpInfo(pointUser, pointName, user, _options);
+    public apiDatasPointUserPointNameSharesGetWithHttpInfo(pointUser: string, pointName: string, user?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Array<DataPointShareDto>>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.apiDatasPointUserPointNameSharesGetWithHttpInfo(pointUser, pointName, user, observableOptions);
         return result.toPromise();
     }
 
@@ -307,8 +584,20 @@ export class PromiseDataApi {
      * @param pointName
      * @param [user]
      */
-    public apiDatasPointUserPointNameSharesGet(pointUser: string, pointName: string, user?: string, _options?: Configuration): Promise<Array<DataPointShareDto>> {
-        const result = this.api.apiDatasPointUserPointNameSharesGet(pointUser, pointName, user, _options);
+    public apiDatasPointUserPointNameSharesGet(pointUser: string, pointName: string, user?: string, _options?: PromiseConfigurationOptions): Promise<Array<DataPointShareDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.apiDatasPointUserPointNameSharesGet(pointUser, pointName, user, observableOptions);
         return result.toPromise();
     }
 
@@ -317,8 +606,20 @@ export class PromiseDataApi {
      * @param pointName
      * @param [dataPointShareDto]
      */
-    public apiDatasPointUserPointNameSharesPutWithHttpInfo(pointUser: string, pointName: string, dataPointShareDto?: DataPointShareDto, _options?: Configuration): Promise<HttpInfo<DataPointShareDto>> {
-        const result = this.api.apiDatasPointUserPointNameSharesPutWithHttpInfo(pointUser, pointName, dataPointShareDto, _options);
+    public apiDatasPointUserPointNameSharesPutWithHttpInfo(pointUser: string, pointName: string, dataPointShareDto?: DataPointShareDto, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DataPointShareDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.apiDatasPointUserPointNameSharesPutWithHttpInfo(pointUser, pointName, dataPointShareDto, observableOptions);
         return result.toPromise();
     }
 
@@ -327,8 +628,20 @@ export class PromiseDataApi {
      * @param pointName
      * @param [dataPointShareDto]
      */
-    public apiDatasPointUserPointNameSharesPut(pointUser: string, pointName: string, dataPointShareDto?: DataPointShareDto, _options?: Configuration): Promise<DataPointShareDto> {
-        const result = this.api.apiDatasPointUserPointNameSharesPut(pointUser, pointName, dataPointShareDto, _options);
+    public apiDatasPointUserPointNameSharesPut(pointUser: string, pointName: string, dataPointShareDto?: DataPointShareDto, _options?: PromiseConfigurationOptions): Promise<DataPointShareDto> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.apiDatasPointUserPointNameSharesPut(pointUser, pointName, dataPointShareDto, observableOptions);
         return result.toPromise();
     }
 
@@ -336,8 +649,20 @@ export class PromiseDataApi {
      * @param [name]
      * @param [maxBytes]
      */
-    public apiDatasPostWithHttpInfo(name?: string, maxBytes?: number, _options?: Configuration): Promise<HttpInfo<DataPointDto>> {
-        const result = this.api.apiDatasPostWithHttpInfo(name, maxBytes, _options);
+    public apiDatasPostWithHttpInfo(name?: string, maxBytes?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DataPointDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.apiDatasPostWithHttpInfo(name, maxBytes, observableOptions);
         return result.toPromise();
     }
 
@@ -345,56 +670,140 @@ export class PromiseDataApi {
      * @param [name]
      * @param [maxBytes]
      */
-    public apiDatasPost(name?: string, maxBytes?: number, _options?: Configuration): Promise<DataPointDto> {
-        const result = this.api.apiDatasPost(name, maxBytes, _options);
+    public apiDatasPost(name?: string, maxBytes?: number, _options?: PromiseConfigurationOptions): Promise<DataPointDto> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.apiDatasPost(name, maxBytes, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param [dataPointBrowseGetDto]
      */
-    public browseFilesForDataWithHttpInfo(dataPointBrowseGetDto?: DataPointBrowseGetDto, _options?: Configuration): Promise<HttpInfo<Array<FileDto>>> {
-        const result = this.api.browseFilesForDataWithHttpInfo(dataPointBrowseGetDto, _options);
+    public browseFilesForDataWithHttpInfo(dataPointBrowseGetDto?: DataPointBrowseGetDto, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Array<FileDto>>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.browseFilesForDataWithHttpInfo(dataPointBrowseGetDto, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param [dataPointBrowseGetDto]
      */
-    public browseFilesForData(dataPointBrowseGetDto?: DataPointBrowseGetDto, _options?: Configuration): Promise<Array<FileDto>> {
-        const result = this.api.browseFilesForData(dataPointBrowseGetDto, _options);
+    public browseFilesForData(dataPointBrowseGetDto?: DataPointBrowseGetDto, _options?: PromiseConfigurationOptions): Promise<Array<FileDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.browseFilesForData(dataPointBrowseGetDto, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param [body]
      */
-    public deleteOneFileForDataWithHttpInfo(body?: string, _options?: Configuration): Promise<HttpInfo<boolean>> {
-        const result = this.api.deleteOneFileForDataWithHttpInfo(body, _options);
+    public deleteOneFileForDataWithHttpInfo(body?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<boolean>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.deleteOneFileForDataWithHttpInfo(body, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param [body]
      */
-    public deleteOneFileForData(body?: string, _options?: Configuration): Promise<boolean> {
-        const result = this.api.deleteOneFileForData(body, _options);
+    public deleteOneFileForData(body?: string, _options?: PromiseConfigurationOptions): Promise<boolean> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.deleteOneFileForData(body, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param [body]
      */
-    public dumpOneFileForDataWithHttpInfo(body?: string, _options?: Configuration): Promise<HttpInfo<FileOutputDto>> {
-        const result = this.api.dumpOneFileForDataWithHttpInfo(body, _options);
+    public dumpOneFileForDataWithHttpInfo(body?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<FileOutputDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.dumpOneFileForDataWithHttpInfo(body, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param [body]
      */
-    public dumpOneFileForData(body?: string, _options?: Configuration): Promise<FileOutputDto> {
-        const result = this.api.dumpOneFileForData(body, _options);
+    public dumpOneFileForData(body?: string, _options?: PromiseConfigurationOptions): Promise<FileOutputDto> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.dumpOneFileForData(body, observableOptions);
         return result.toPromise();
     }
 
@@ -402,8 +811,20 @@ export class PromiseDataApi {
      * @param pointUser
      * @param pointName
      */
-    public getAllJobsForDataWithHttpInfo(pointUser: string, pointName: string, _options?: Configuration): Promise<HttpInfo<Array<RepoDataJobDto>>> {
-        const result = this.api.getAllJobsForDataWithHttpInfo(pointUser, pointName, _options);
+    public getAllJobsForDataWithHttpInfo(pointUser: string, pointName: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Array<RepoDataJobDto>>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getAllJobsForDataWithHttpInfo(pointUser, pointName, observableOptions);
         return result.toPromise();
     }
 
@@ -411,24 +832,60 @@ export class PromiseDataApi {
      * @param pointUser
      * @param pointName
      */
-    public getAllJobsForData(pointUser: string, pointName: string, _options?: Configuration): Promise<Array<RepoDataJobDto>> {
-        const result = this.api.getAllJobsForData(pointUser, pointName, _options);
+    public getAllJobsForData(pointUser: string, pointName: string, _options?: PromiseConfigurationOptions): Promise<Array<RepoDataJobDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getAllJobsForData(pointUser, pointName, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param [filePutDto]
      */
-    public updateOneFileForDataWithHttpInfo(filePutDto?: FilePutDto, _options?: Configuration): Promise<HttpInfo<boolean>> {
-        const result = this.api.updateOneFileForDataWithHttpInfo(filePutDto, _options);
+    public updateOneFileForDataWithHttpInfo(filePutDto?: FilePutDto, _options?: PromiseConfigurationOptions): Promise<HttpInfo<boolean>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.updateOneFileForDataWithHttpInfo(filePutDto, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param [filePutDto]
      */
-    public updateOneFileForData(filePutDto?: FilePutDto, _options?: Configuration): Promise<boolean> {
-        const result = this.api.updateOneFileForData(filePutDto, _options);
+    public updateOneFileForData(filePutDto?: FilePutDto, _options?: PromiseConfigurationOptions): Promise<boolean> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.updateOneFileForData(filePutDto, observableOptions);
         return result.toPromise();
     }
 
@@ -453,57 +910,153 @@ export class PromiseInfoApi {
 
     /**
      */
-    public getSystemSummaryWithHttpInfo(_options?: Configuration): Promise<HttpInfo<SystemStatusDto>> {
-        const result = this.api.getSystemSummaryWithHttpInfo(_options);
+    public getSystemSummaryWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<SystemStatusDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getSystemSummaryWithHttpInfo(observableOptions);
         return result.toPromise();
     }
 
     /**
      */
-    public getSystemSummary(_options?: Configuration): Promise<SystemStatusDto> {
-        const result = this.api.getSystemSummary(_options);
+    public getSystemSummary(_options?: PromiseConfigurationOptions): Promise<SystemStatusDto> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getSystemSummary(observableOptions);
         return result.toPromise();
     }
 
     /**
      */
-    public getValidNotifyMethodsWithHttpInfo(_options?: Configuration): Promise<HttpInfo<Array<string>>> {
-        const result = this.api.getValidNotifyMethodsWithHttpInfo(_options);
+    public getValidNotifyMethodsWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<Array<string>>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getValidNotifyMethodsWithHttpInfo(observableOptions);
         return result.toPromise();
     }
 
     /**
      */
-    public getValidNotifyMethods(_options?: Configuration): Promise<Array<string>> {
-        const result = this.api.getValidNotifyMethods(_options);
+    public getValidNotifyMethods(_options?: PromiseConfigurationOptions): Promise<Array<string>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getValidNotifyMethods(observableOptions);
         return result.toPromise();
     }
 
     /**
      */
-    public getValidNotifySubscriptionsWithHttpInfo(_options?: Configuration): Promise<HttpInfo<Array<string>>> {
-        const result = this.api.getValidNotifySubscriptionsWithHttpInfo(_options);
+    public getValidNotifySubscriptionsWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<Array<string>>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getValidNotifySubscriptionsWithHttpInfo(observableOptions);
         return result.toPromise();
     }
 
     /**
      */
-    public getValidNotifySubscriptions(_options?: Configuration): Promise<Array<string>> {
-        const result = this.api.getValidNotifySubscriptions(_options);
+    public getValidNotifySubscriptions(_options?: PromiseConfigurationOptions): Promise<Array<string>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getValidNotifySubscriptions(observableOptions);
         return result.toPromise();
     }
 
     /**
      */
-    public getValidPermissionsWithHttpInfo(_options?: Configuration): Promise<HttpInfo<Array<string>>> {
-        const result = this.api.getValidPermissionsWithHttpInfo(_options);
+    public getValidPermissionsWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<Array<string>>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getValidPermissionsWithHttpInfo(observableOptions);
         return result.toPromise();
     }
 
     /**
      */
-    public getValidPermissions(_options?: Configuration): Promise<Array<string>> {
-        const result = this.api.getValidPermissions(_options);
+    public getValidPermissions(_options?: PromiseConfigurationOptions): Promise<Array<string>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getValidPermissions(observableOptions);
         return result.toPromise();
     }
 
@@ -529,78 +1082,198 @@ export class PromiseJobApi {
     /**
      * @param id
      */
-    public cancelOneJobWithHttpInfo(id: string, _options?: Configuration): Promise<HttpInfo<boolean>> {
-        const result = this.api.cancelOneJobWithHttpInfo(id, _options);
+    public cancelOneJobWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<boolean>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.cancelOneJobWithHttpInfo(id, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param id
      */
-    public cancelOneJob(id: string, _options?: Configuration): Promise<boolean> {
-        const result = this.api.cancelOneJob(id, _options);
+    public cancelOneJob(id: string, _options?: PromiseConfigurationOptions): Promise<boolean> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.cancelOneJob(id, observableOptions);
         return result.toPromise();
     }
 
     /**
      */
-    public getAllJobsWithHttpInfo(_options?: Configuration): Promise<HttpInfo<Array<RepoDataJobDto>>> {
-        const result = this.api.getAllJobsWithHttpInfo(_options);
+    public getAllJobsWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<Array<RepoDataJobDto>>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getAllJobsWithHttpInfo(observableOptions);
         return result.toPromise();
     }
 
     /**
      */
-    public getAllJobs(_options?: Configuration): Promise<Array<RepoDataJobDto>> {
-        const result = this.api.getAllJobs(_options);
+    public getAllJobs(_options?: PromiseConfigurationOptions): Promise<Array<RepoDataJobDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getAllJobs(observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param id
      */
-    public getOneJobWithHttpInfo(id: string, _options?: Configuration): Promise<HttpInfo<RepoDataJobDto>> {
-        const result = this.api.getOneJobWithHttpInfo(id, _options);
+    public getOneJobWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RepoDataJobDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getOneJobWithHttpInfo(id, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param id
      */
-    public getOneJob(id: string, _options?: Configuration): Promise<RepoDataJobDto> {
-        const result = this.api.getOneJob(id, _options);
+    public getOneJob(id: string, _options?: PromiseConfigurationOptions): Promise<RepoDataJobDto> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getOneJob(id, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param [jobBackupDto]
      */
-    public startOneBackupWithHttpInfo(jobBackupDto?: JobBackupDto, _options?: Configuration): Promise<HttpInfo<RepoDataJobDto>> {
-        const result = this.api.startOneBackupWithHttpInfo(jobBackupDto, _options);
+    public startOneBackupWithHttpInfo(jobBackupDto?: JobBackupDto, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RepoDataJobDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.startOneBackupWithHttpInfo(jobBackupDto, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param [jobBackupDto]
      */
-    public startOneBackup(jobBackupDto?: JobBackupDto, _options?: Configuration): Promise<RepoDataJobDto> {
-        const result = this.api.startOneBackup(jobBackupDto, _options);
+    public startOneBackup(jobBackupDto?: JobBackupDto, _options?: PromiseConfigurationOptions): Promise<RepoDataJobDto> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.startOneBackup(jobBackupDto, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param [jobRestoreDto]
      */
-    public startOneRestoreWithHttpInfo(jobRestoreDto?: JobRestoreDto, _options?: Configuration): Promise<HttpInfo<RepoDataJobDto>> {
-        const result = this.api.startOneRestoreWithHttpInfo(jobRestoreDto, _options);
+    public startOneRestoreWithHttpInfo(jobRestoreDto?: JobRestoreDto, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RepoDataJobDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.startOneRestoreWithHttpInfo(jobRestoreDto, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param [jobRestoreDto]
      */
-    public startOneRestore(jobRestoreDto?: JobRestoreDto, _options?: Configuration): Promise<RepoDataJobDto> {
-        const result = this.api.startOneRestore(jobRestoreDto, _options);
+    public startOneRestore(jobRestoreDto?: JobRestoreDto, _options?: PromiseConfigurationOptions): Promise<RepoDataJobDto> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.startOneRestore(jobRestoreDto, observableOptions);
         return result.toPromise();
     }
 
@@ -626,46 +1299,118 @@ export class PromiseLogApi {
     /**
      * @param id
      */
-    public deleteOneLogWithHttpInfo(id: number, _options?: Configuration): Promise<HttpInfo<boolean>> {
-        const result = this.api.deleteOneLogWithHttpInfo(id, _options);
+    public deleteOneLogWithHttpInfo(id: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<boolean>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.deleteOneLogWithHttpInfo(id, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param id
      */
-    public deleteOneLog(id: number, _options?: Configuration): Promise<boolean> {
-        const result = this.api.deleteOneLog(id, _options);
+    public deleteOneLog(id: number, _options?: PromiseConfigurationOptions): Promise<boolean> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.deleteOneLog(id, observableOptions);
         return result.toPromise();
     }
 
     /**
      */
-    public getAllLogsWithHttpInfo(_options?: Configuration): Promise<HttpInfo<Array<LogItemDto>>> {
-        const result = this.api.getAllLogsWithHttpInfo(_options);
+    public getAllLogsWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<Array<LogItemDto>>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getAllLogsWithHttpInfo(observableOptions);
         return result.toPromise();
     }
 
     /**
      */
-    public getAllLogs(_options?: Configuration): Promise<Array<LogItemDto>> {
-        const result = this.api.getAllLogs(_options);
+    public getAllLogs(_options?: PromiseConfigurationOptions): Promise<Array<LogItemDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getAllLogs(observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param id
      */
-    public getOneLogWithHttpInfo(id: number, _options?: Configuration): Promise<HttpInfo<LogItemDto>> {
-        const result = this.api.getOneLogWithHttpInfo(id, _options);
+    public getOneLogWithHttpInfo(id: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<LogItemDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getOneLogWithHttpInfo(id, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param id
      */
-    public getOneLog(id: number, _options?: Configuration): Promise<LogItemDto> {
-        const result = this.api.getOneLog(id, _options);
+    public getOneLog(id: number, _options?: PromiseConfigurationOptions): Promise<LogItemDto> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getOneLog(id, observableOptions);
         return result.toPromise();
     }
 
@@ -691,62 +1436,158 @@ export class PromiseMessageApi {
     /**
      * @param id
      */
-    public deleteOneMessageWithHttpInfo(id: string, _options?: Configuration): Promise<HttpInfo<boolean>> {
-        const result = this.api.deleteOneMessageWithHttpInfo(id, _options);
+    public deleteOneMessageWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<boolean>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.deleteOneMessageWithHttpInfo(id, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param id
      */
-    public deleteOneMessage(id: string, _options?: Configuration): Promise<boolean> {
-        const result = this.api.deleteOneMessage(id, _options);
+    public deleteOneMessage(id: string, _options?: PromiseConfigurationOptions): Promise<boolean> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.deleteOneMessage(id, observableOptions);
         return result.toPromise();
     }
 
     /**
      */
-    public getAllMessagesWithHttpInfo(_options?: Configuration): Promise<HttpInfo<Array<MessageItemDto>>> {
-        const result = this.api.getAllMessagesWithHttpInfo(_options);
+    public getAllMessagesWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<Array<MessageItemDto>>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getAllMessagesWithHttpInfo(observableOptions);
         return result.toPromise();
     }
 
     /**
      */
-    public getAllMessages(_options?: Configuration): Promise<Array<MessageItemDto>> {
-        const result = this.api.getAllMessages(_options);
+    public getAllMessages(_options?: PromiseConfigurationOptions): Promise<Array<MessageItemDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getAllMessages(observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param id
      */
-    public getOneMessageWithHttpInfo(id: string, _options?: Configuration): Promise<HttpInfo<MessageItemDto>> {
-        const result = this.api.getOneMessageWithHttpInfo(id, _options);
+    public getOneMessageWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<MessageItemDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getOneMessageWithHttpInfo(id, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param id
      */
-    public getOneMessage(id: string, _options?: Configuration): Promise<MessageItemDto> {
-        const result = this.api.getOneMessage(id, _options);
+    public getOneMessage(id: string, _options?: PromiseConfigurationOptions): Promise<MessageItemDto> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getOneMessage(id, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param [messagePostDto]
      */
-    public postOneMessageWithHttpInfo(messagePostDto?: MessagePostDto, _options?: Configuration): Promise<HttpInfo<boolean>> {
-        const result = this.api.postOneMessageWithHttpInfo(messagePostDto, _options);
+    public postOneMessageWithHttpInfo(messagePostDto?: MessagePostDto, _options?: PromiseConfigurationOptions): Promise<HttpInfo<boolean>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.postOneMessageWithHttpInfo(messagePostDto, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param [messagePostDto]
      */
-    public postOneMessage(messagePostDto?: MessagePostDto, _options?: Configuration): Promise<boolean> {
-        const result = this.api.postOneMessage(messagePostDto, _options);
+    public postOneMessage(messagePostDto?: MessagePostDto, _options?: PromiseConfigurationOptions): Promise<boolean> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.postOneMessage(messagePostDto, observableOptions);
         return result.toPromise();
     }
 
@@ -772,94 +1613,238 @@ export class PromiseNotificationApi {
     /**
      * @param id
      */
-    public deleteOneNotificationWithHttpInfo(id: string, _options?: Configuration): Promise<HttpInfo<boolean>> {
-        const result = this.api.deleteOneNotificationWithHttpInfo(id, _options);
+    public deleteOneNotificationWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<boolean>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.deleteOneNotificationWithHttpInfo(id, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param id
      */
-    public deleteOneNotification(id: string, _options?: Configuration): Promise<boolean> {
-        const result = this.api.deleteOneNotification(id, _options);
+    public deleteOneNotification(id: string, _options?: PromiseConfigurationOptions): Promise<boolean> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.deleteOneNotification(id, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param [body]
      */
-    public deleteOneNotificationConfigWithHttpInfo(body?: string, _options?: Configuration): Promise<HttpInfo<boolean>> {
-        const result = this.api.deleteOneNotificationConfigWithHttpInfo(body, _options);
+    public deleteOneNotificationConfigWithHttpInfo(body?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<boolean>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.deleteOneNotificationConfigWithHttpInfo(body, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param [body]
      */
-    public deleteOneNotificationConfig(body?: string, _options?: Configuration): Promise<boolean> {
-        const result = this.api.deleteOneNotificationConfig(body, _options);
+    public deleteOneNotificationConfig(body?: string, _options?: PromiseConfigurationOptions): Promise<boolean> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.deleteOneNotificationConfig(body, observableOptions);
         return result.toPromise();
     }
 
     /**
      */
-    public getAllNotificationConfigsWithHttpInfo(_options?: Configuration): Promise<HttpInfo<Array<WSConfigItemDto>>> {
-        const result = this.api.getAllNotificationConfigsWithHttpInfo(_options);
+    public getAllNotificationConfigsWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<Array<WSConfigItemDto>>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getAllNotificationConfigsWithHttpInfo(observableOptions);
         return result.toPromise();
     }
 
     /**
      */
-    public getAllNotificationConfigs(_options?: Configuration): Promise<Array<WSConfigItemDto>> {
-        const result = this.api.getAllNotificationConfigs(_options);
+    public getAllNotificationConfigs(_options?: PromiseConfigurationOptions): Promise<Array<WSConfigItemDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getAllNotificationConfigs(observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param [unreadOnly]
      */
-    public getAllNotificationsWithHttpInfo(unreadOnly?: boolean, _options?: Configuration): Promise<HttpInfo<Array<WSNotificationDto>>> {
-        const result = this.api.getAllNotificationsWithHttpInfo(unreadOnly, _options);
+    public getAllNotificationsWithHttpInfo(unreadOnly?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Array<WSNotificationDto>>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getAllNotificationsWithHttpInfo(unreadOnly, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param [unreadOnly]
      */
-    public getAllNotifications(unreadOnly?: boolean, _options?: Configuration): Promise<Array<WSNotificationDto>> {
-        const result = this.api.getAllNotifications(unreadOnly, _options);
+    public getAllNotifications(unreadOnly?: boolean, _options?: PromiseConfigurationOptions): Promise<Array<WSNotificationDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getAllNotifications(unreadOnly, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param id
      */
-    public getOneNotificationWithHttpInfo(id: string, _options?: Configuration): Promise<HttpInfo<WSNotificationDto>> {
-        const result = this.api.getOneNotificationWithHttpInfo(id, _options);
+    public getOneNotificationWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<WSNotificationDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getOneNotificationWithHttpInfo(id, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param id
      */
-    public getOneNotification(id: string, _options?: Configuration): Promise<WSNotificationDto> {
-        const result = this.api.getOneNotification(id, _options);
+    public getOneNotification(id: string, _options?: PromiseConfigurationOptions): Promise<WSNotificationDto> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getOneNotification(id, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param [wSConfigPutDto]
      */
-    public updateOneNotificationConfigWithHttpInfo(wSConfigPutDto?: WSConfigPutDto, _options?: Configuration): Promise<HttpInfo<WSConfigItemDto>> {
-        const result = this.api.updateOneNotificationConfigWithHttpInfo(wSConfigPutDto, _options);
+    public updateOneNotificationConfigWithHttpInfo(wSConfigPutDto?: WSConfigPutDto, _options?: PromiseConfigurationOptions): Promise<HttpInfo<WSConfigItemDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.updateOneNotificationConfigWithHttpInfo(wSConfigPutDto, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param [wSConfigPutDto]
      */
-    public updateOneNotificationConfig(wSConfigPutDto?: WSConfigPutDto, _options?: Configuration): Promise<WSConfigItemDto> {
-        const result = this.api.updateOneNotificationConfig(wSConfigPutDto, _options);
+    public updateOneNotificationConfig(wSConfigPutDto?: WSConfigPutDto, _options?: PromiseConfigurationOptions): Promise<WSConfigItemDto> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.updateOneNotificationConfig(wSConfigPutDto, observableOptions);
         return result.toPromise();
     }
 
@@ -884,15 +1869,39 @@ export class PromiseRepoApi {
 
     /**
      */
-    public apiReposGetWithHttpInfo(_options?: Configuration): Promise<HttpInfo<Array<RepoPointDto>>> {
-        const result = this.api.apiReposGetWithHttpInfo(_options);
+    public apiReposGetWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<Array<RepoPointDto>>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.apiReposGetWithHttpInfo(observableOptions);
         return result.toPromise();
     }
 
     /**
      */
-    public apiReposGet(_options?: Configuration): Promise<Array<RepoPointDto>> {
-        const result = this.api.apiReposGet(_options);
+    public apiReposGet(_options?: PromiseConfigurationOptions): Promise<Array<RepoPointDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.apiReposGet(observableOptions);
         return result.toPromise();
     }
 
@@ -900,8 +1909,20 @@ export class PromiseRepoApi {
      * @param pointUser
      * @param pointName
      */
-    public apiReposPointUserPointNameDeleteWithHttpInfo(pointUser: string, pointName: string, _options?: Configuration): Promise<HttpInfo<boolean>> {
-        const result = this.api.apiReposPointUserPointNameDeleteWithHttpInfo(pointUser, pointName, _options);
+    public apiReposPointUserPointNameDeleteWithHttpInfo(pointUser: string, pointName: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<boolean>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.apiReposPointUserPointNameDeleteWithHttpInfo(pointUser, pointName, observableOptions);
         return result.toPromise();
     }
 
@@ -909,8 +1930,20 @@ export class PromiseRepoApi {
      * @param pointUser
      * @param pointName
      */
-    public apiReposPointUserPointNameDelete(pointUser: string, pointName: string, _options?: Configuration): Promise<boolean> {
-        const result = this.api.apiReposPointUserPointNameDelete(pointUser, pointName, _options);
+    public apiReposPointUserPointNameDelete(pointUser: string, pointName: string, _options?: PromiseConfigurationOptions): Promise<boolean> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.apiReposPointUserPointNameDelete(pointUser, pointName, observableOptions);
         return result.toPromise();
     }
 
@@ -918,8 +1951,20 @@ export class PromiseRepoApi {
      * @param pointUser
      * @param pointName
      */
-    public apiReposPointUserPointNameGetWithHttpInfo(pointUser: string, pointName: string, _options?: Configuration): Promise<HttpInfo<RepoPointDto>> {
-        const result = this.api.apiReposPointUserPointNameGetWithHttpInfo(pointUser, pointName, _options);
+    public apiReposPointUserPointNameGetWithHttpInfo(pointUser: string, pointName: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RepoPointDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.apiReposPointUserPointNameGetWithHttpInfo(pointUser, pointName, observableOptions);
         return result.toPromise();
     }
 
@@ -927,8 +1972,20 @@ export class PromiseRepoApi {
      * @param pointUser
      * @param pointName
      */
-    public apiReposPointUserPointNameGet(pointUser: string, pointName: string, _options?: Configuration): Promise<RepoPointDto> {
-        const result = this.api.apiReposPointUserPointNameGet(pointUser, pointName, _options);
+    public apiReposPointUserPointNameGet(pointUser: string, pointName: string, _options?: PromiseConfigurationOptions): Promise<RepoPointDto> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.apiReposPointUserPointNameGet(pointUser, pointName, observableOptions);
         return result.toPromise();
     }
 
@@ -937,8 +1994,20 @@ export class PromiseRepoApi {
      * @param pointName
      * @param [maxBytes]
      */
-    public apiReposPointUserPointNamePutWithHttpInfo(pointUser: string, pointName: string, maxBytes?: number, _options?: Configuration): Promise<HttpInfo<RepoPointDto>> {
-        const result = this.api.apiReposPointUserPointNamePutWithHttpInfo(pointUser, pointName, maxBytes, _options);
+    public apiReposPointUserPointNamePutWithHttpInfo(pointUser: string, pointName: string, maxBytes?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RepoPointDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.apiReposPointUserPointNamePutWithHttpInfo(pointUser, pointName, maxBytes, observableOptions);
         return result.toPromise();
     }
 
@@ -947,8 +2016,20 @@ export class PromiseRepoApi {
      * @param pointName
      * @param [maxBytes]
      */
-    public apiReposPointUserPointNamePut(pointUser: string, pointName: string, maxBytes?: number, _options?: Configuration): Promise<RepoPointDto> {
-        const result = this.api.apiReposPointUserPointNamePut(pointUser, pointName, maxBytes, _options);
+    public apiReposPointUserPointNamePut(pointUser: string, pointName: string, maxBytes?: number, _options?: PromiseConfigurationOptions): Promise<RepoPointDto> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.apiReposPointUserPointNamePut(pointUser, pointName, maxBytes, observableOptions);
         return result.toPromise();
     }
 
@@ -957,8 +2038,20 @@ export class PromiseRepoApi {
      * @param pointName
      * @param [user]
      */
-    public apiReposPointUserPointNameSharesDeleteWithHttpInfo(pointUser: string, pointName: string, user?: string, _options?: Configuration): Promise<HttpInfo<boolean>> {
-        const result = this.api.apiReposPointUserPointNameSharesDeleteWithHttpInfo(pointUser, pointName, user, _options);
+    public apiReposPointUserPointNameSharesDeleteWithHttpInfo(pointUser: string, pointName: string, user?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<boolean>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.apiReposPointUserPointNameSharesDeleteWithHttpInfo(pointUser, pointName, user, observableOptions);
         return result.toPromise();
     }
 
@@ -967,8 +2060,20 @@ export class PromiseRepoApi {
      * @param pointName
      * @param [user]
      */
-    public apiReposPointUserPointNameSharesDelete(pointUser: string, pointName: string, user?: string, _options?: Configuration): Promise<boolean> {
-        const result = this.api.apiReposPointUserPointNameSharesDelete(pointUser, pointName, user, _options);
+    public apiReposPointUserPointNameSharesDelete(pointUser: string, pointName: string, user?: string, _options?: PromiseConfigurationOptions): Promise<boolean> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.apiReposPointUserPointNameSharesDelete(pointUser, pointName, user, observableOptions);
         return result.toPromise();
     }
 
@@ -977,8 +2082,20 @@ export class PromiseRepoApi {
      * @param pointName
      * @param [user]
      */
-    public apiReposPointUserPointNameSharesGetWithHttpInfo(pointUser: string, pointName: string, user?: string, _options?: Configuration): Promise<HttpInfo<Array<RepoPointShareDto>>> {
-        const result = this.api.apiReposPointUserPointNameSharesGetWithHttpInfo(pointUser, pointName, user, _options);
+    public apiReposPointUserPointNameSharesGetWithHttpInfo(pointUser: string, pointName: string, user?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Array<RepoPointShareDto>>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.apiReposPointUserPointNameSharesGetWithHttpInfo(pointUser, pointName, user, observableOptions);
         return result.toPromise();
     }
 
@@ -987,8 +2104,20 @@ export class PromiseRepoApi {
      * @param pointName
      * @param [user]
      */
-    public apiReposPointUserPointNameSharesGet(pointUser: string, pointName: string, user?: string, _options?: Configuration): Promise<Array<RepoPointShareDto>> {
-        const result = this.api.apiReposPointUserPointNameSharesGet(pointUser, pointName, user, _options);
+    public apiReposPointUserPointNameSharesGet(pointUser: string, pointName: string, user?: string, _options?: PromiseConfigurationOptions): Promise<Array<RepoPointShareDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.apiReposPointUserPointNameSharesGet(pointUser, pointName, user, observableOptions);
         return result.toPromise();
     }
 
@@ -997,8 +2126,20 @@ export class PromiseRepoApi {
      * @param pointName
      * @param [repoPointShareDto]
      */
-    public apiReposPointUserPointNameSharesPutWithHttpInfo(pointUser: string, pointName: string, repoPointShareDto?: RepoPointShareDto, _options?: Configuration): Promise<HttpInfo<RepoPointShareDto>> {
-        const result = this.api.apiReposPointUserPointNameSharesPutWithHttpInfo(pointUser, pointName, repoPointShareDto, _options);
+    public apiReposPointUserPointNameSharesPutWithHttpInfo(pointUser: string, pointName: string, repoPointShareDto?: RepoPointShareDto, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RepoPointShareDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.apiReposPointUserPointNameSharesPutWithHttpInfo(pointUser, pointName, repoPointShareDto, observableOptions);
         return result.toPromise();
     }
 
@@ -1007,8 +2148,20 @@ export class PromiseRepoApi {
      * @param pointName
      * @param [repoPointShareDto]
      */
-    public apiReposPointUserPointNameSharesPut(pointUser: string, pointName: string, repoPointShareDto?: RepoPointShareDto, _options?: Configuration): Promise<RepoPointShareDto> {
-        const result = this.api.apiReposPointUserPointNameSharesPut(pointUser, pointName, repoPointShareDto, _options);
+    public apiReposPointUserPointNameSharesPut(pointUser: string, pointName: string, repoPointShareDto?: RepoPointShareDto, _options?: PromiseConfigurationOptions): Promise<RepoPointShareDto> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.apiReposPointUserPointNameSharesPut(pointUser, pointName, repoPointShareDto, observableOptions);
         return result.toPromise();
     }
 
@@ -1016,8 +2169,20 @@ export class PromiseRepoApi {
      * @param [name]
      * @param [maxBytes]
      */
-    public apiReposPostWithHttpInfo(name?: string, maxBytes?: number, _options?: Configuration): Promise<HttpInfo<RepoPointDto>> {
-        const result = this.api.apiReposPostWithHttpInfo(name, maxBytes, _options);
+    public apiReposPostWithHttpInfo(name?: string, maxBytes?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RepoPointDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.apiReposPostWithHttpInfo(name, maxBytes, observableOptions);
         return result.toPromise();
     }
 
@@ -1025,24 +2190,60 @@ export class PromiseRepoApi {
      * @param [name]
      * @param [maxBytes]
      */
-    public apiReposPost(name?: string, maxBytes?: number, _options?: Configuration): Promise<RepoPointDto> {
-        const result = this.api.apiReposPost(name, maxBytes, _options);
+    public apiReposPost(name?: string, maxBytes?: number, _options?: PromiseConfigurationOptions): Promise<RepoPointDto> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.apiReposPost(name, maxBytes, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param [dataPointBrowseGetDto]
      */
-    public browseFilesForRepoWithHttpInfo(dataPointBrowseGetDto?: DataPointBrowseGetDto, _options?: Configuration): Promise<HttpInfo<Array<FileDto>>> {
-        const result = this.api.browseFilesForRepoWithHttpInfo(dataPointBrowseGetDto, _options);
+    public browseFilesForRepoWithHttpInfo(dataPointBrowseGetDto?: DataPointBrowseGetDto, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Array<FileDto>>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.browseFilesForRepoWithHttpInfo(dataPointBrowseGetDto, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param [dataPointBrowseGetDto]
      */
-    public browseFilesForRepo(dataPointBrowseGetDto?: DataPointBrowseGetDto, _options?: Configuration): Promise<Array<FileDto>> {
-        const result = this.api.browseFilesForRepo(dataPointBrowseGetDto, _options);
+    public browseFilesForRepo(dataPointBrowseGetDto?: DataPointBrowseGetDto, _options?: PromiseConfigurationOptions): Promise<Array<FileDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.browseFilesForRepo(dataPointBrowseGetDto, observableOptions);
         return result.toPromise();
     }
 
@@ -1051,8 +2252,20 @@ export class PromiseRepoApi {
      * @param pointName
      * @param id
      */
-    public deleteOneSnapshotForRepoWithHttpInfo(pointUser: string, pointName: string, id: string, _options?: Configuration): Promise<HttpInfo<boolean>> {
-        const result = this.api.deleteOneSnapshotForRepoWithHttpInfo(pointUser, pointName, id, _options);
+    public deleteOneSnapshotForRepoWithHttpInfo(pointUser: string, pointName: string, id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<boolean>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.deleteOneSnapshotForRepoWithHttpInfo(pointUser, pointName, id, observableOptions);
         return result.toPromise();
     }
 
@@ -1061,24 +2274,60 @@ export class PromiseRepoApi {
      * @param pointName
      * @param id
      */
-    public deleteOneSnapshotForRepo(pointUser: string, pointName: string, id: string, _options?: Configuration): Promise<boolean> {
-        const result = this.api.deleteOneSnapshotForRepo(pointUser, pointName, id, _options);
+    public deleteOneSnapshotForRepo(pointUser: string, pointName: string, id: string, _options?: PromiseConfigurationOptions): Promise<boolean> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.deleteOneSnapshotForRepo(pointUser, pointName, id, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param [body]
      */
-    public dumpFileForRepoWithHttpInfo(body?: string, _options?: Configuration): Promise<HttpInfo<FileOutputDto>> {
-        const result = this.api.dumpFileForRepoWithHttpInfo(body, _options);
+    public dumpFileForRepoWithHttpInfo(body?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<FileOutputDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.dumpFileForRepoWithHttpInfo(body, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param [body]
      */
-    public dumpFileForRepo(body?: string, _options?: Configuration): Promise<FileOutputDto> {
-        const result = this.api.dumpFileForRepo(body, _options);
+    public dumpFileForRepo(body?: string, _options?: PromiseConfigurationOptions): Promise<FileOutputDto> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.dumpFileForRepo(body, observableOptions);
         return result.toPromise();
     }
 
@@ -1086,8 +2335,20 @@ export class PromiseRepoApi {
      * @param pointUser
      * @param pointName
      */
-    public getAllJobsForRepoWithHttpInfo(pointUser: string, pointName: string, _options?: Configuration): Promise<HttpInfo<Array<RepoDataJobDto>>> {
-        const result = this.api.getAllJobsForRepoWithHttpInfo(pointUser, pointName, _options);
+    public getAllJobsForRepoWithHttpInfo(pointUser: string, pointName: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Array<RepoDataJobDto>>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getAllJobsForRepoWithHttpInfo(pointUser, pointName, observableOptions);
         return result.toPromise();
     }
 
@@ -1095,8 +2356,20 @@ export class PromiseRepoApi {
      * @param pointUser
      * @param pointName
      */
-    public getAllJobsForRepo(pointUser: string, pointName: string, _options?: Configuration): Promise<Array<RepoDataJobDto>> {
-        const result = this.api.getAllJobsForRepo(pointUser, pointName, _options);
+    public getAllJobsForRepo(pointUser: string, pointName: string, _options?: PromiseConfigurationOptions): Promise<Array<RepoDataJobDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getAllJobsForRepo(pointUser, pointName, observableOptions);
         return result.toPromise();
     }
 
@@ -1104,8 +2377,20 @@ export class PromiseRepoApi {
      * @param pointUser
      * @param pointName
      */
-    public getAllSnapshotsForRepoWithHttpInfo(pointUser: string, pointName: string, _options?: Configuration): Promise<HttpInfo<Array<SnapshotDto>>> {
-        const result = this.api.getAllSnapshotsForRepoWithHttpInfo(pointUser, pointName, _options);
+    public getAllSnapshotsForRepoWithHttpInfo(pointUser: string, pointName: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Array<SnapshotDto>>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getAllSnapshotsForRepoWithHttpInfo(pointUser, pointName, observableOptions);
         return result.toPromise();
     }
 
@@ -1113,8 +2398,20 @@ export class PromiseRepoApi {
      * @param pointUser
      * @param pointName
      */
-    public getAllSnapshotsForRepo(pointUser: string, pointName: string, _options?: Configuration): Promise<Array<SnapshotDto>> {
-        const result = this.api.getAllSnapshotsForRepo(pointUser, pointName, _options);
+    public getAllSnapshotsForRepo(pointUser: string, pointName: string, _options?: PromiseConfigurationOptions): Promise<Array<SnapshotDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getAllSnapshotsForRepo(pointUser, pointName, observableOptions);
         return result.toPromise();
     }
 
@@ -1123,8 +2420,20 @@ export class PromiseRepoApi {
      * @param pointName
      * @param id
      */
-    public getOneSnapshotForRepoWithHttpInfo(pointUser: string, pointName: string, id: string, _options?: Configuration): Promise<HttpInfo<SnapshotDto>> {
-        const result = this.api.getOneSnapshotForRepoWithHttpInfo(pointUser, pointName, id, _options);
+    public getOneSnapshotForRepoWithHttpInfo(pointUser: string, pointName: string, id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SnapshotDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getOneSnapshotForRepoWithHttpInfo(pointUser, pointName, id, observableOptions);
         return result.toPromise();
     }
 
@@ -1133,8 +2442,20 @@ export class PromiseRepoApi {
      * @param pointName
      * @param id
      */
-    public getOneSnapshotForRepo(pointUser: string, pointName: string, id: string, _options?: Configuration): Promise<SnapshotDto> {
-        const result = this.api.getOneSnapshotForRepo(pointUser, pointName, id, _options);
+    public getOneSnapshotForRepo(pointUser: string, pointName: string, id: string, _options?: PromiseConfigurationOptions): Promise<SnapshotDto> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getOneSnapshotForRepo(pointUser, pointName, id, observableOptions);
         return result.toPromise();
     }
 
@@ -1160,32 +2481,80 @@ export class PromiseUserApi {
     /**
      * @param [userCreateDto]
      */
-    public createOneUserWithHttpInfo(userCreateDto?: UserCreateDto, _options?: Configuration): Promise<HttpInfo<UserSummaryDto>> {
-        const result = this.api.createOneUserWithHttpInfo(userCreateDto, _options);
+    public createOneUserWithHttpInfo(userCreateDto?: UserCreateDto, _options?: PromiseConfigurationOptions): Promise<HttpInfo<UserSummaryDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.createOneUserWithHttpInfo(userCreateDto, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param [userCreateDto]
      */
-    public createOneUser(userCreateDto?: UserCreateDto, _options?: Configuration): Promise<UserSummaryDto> {
-        const result = this.api.createOneUser(userCreateDto, _options);
+    public createOneUser(userCreateDto?: UserCreateDto, _options?: PromiseConfigurationOptions): Promise<UserSummaryDto> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.createOneUser(userCreateDto, observableOptions);
         return result.toPromise();
     }
 
     /**
-     * @param [userName]
+     * @param userName
      */
-    public deleteOneUserWithHttpInfo(userName?: string, _options?: Configuration): Promise<HttpInfo<boolean>> {
-        const result = this.api.deleteOneUserWithHttpInfo(userName, _options);
+    public deleteOneUserWithHttpInfo(userName: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<boolean>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.deleteOneUserWithHttpInfo(userName, observableOptions);
         return result.toPromise();
     }
 
     /**
-     * @param [userName]
+     * @param userName
      */
-    public deleteOneUser(userName?: string, _options?: Configuration): Promise<boolean> {
-        const result = this.api.deleteOneUser(userName, _options);
+    public deleteOneUser(userName: string, _options?: PromiseConfigurationOptions): Promise<boolean> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.deleteOneUser(userName, observableOptions);
         return result.toPromise();
     }
 
@@ -1193,8 +2562,20 @@ export class PromiseUserApi {
      * @param userName
      * @param permissionName
      */
-    public disableOnePermissionForUserWithHttpInfo(userName: string, permissionName: string, _options?: Configuration): Promise<HttpInfo<boolean>> {
-        const result = this.api.disableOnePermissionForUserWithHttpInfo(userName, permissionName, _options);
+    public disableOnePermissionForUserWithHttpInfo(userName: string, permissionName: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<boolean>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.disableOnePermissionForUserWithHttpInfo(userName, permissionName, observableOptions);
         return result.toPromise();
     }
 
@@ -1202,8 +2583,20 @@ export class PromiseUserApi {
      * @param userName
      * @param permissionName
      */
-    public disableOnePermissionForUser(userName: string, permissionName: string, _options?: Configuration): Promise<boolean> {
-        const result = this.api.disableOnePermissionForUser(userName, permissionName, _options);
+    public disableOnePermissionForUser(userName: string, permissionName: string, _options?: PromiseConfigurationOptions): Promise<boolean> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.disableOnePermissionForUser(userName, permissionName, observableOptions);
         return result.toPromise();
     }
 
@@ -1211,8 +2604,20 @@ export class PromiseUserApi {
      * @param userName
      * @param permissionName
      */
-    public enableOnePermissionForUserWithHttpInfo(userName: string, permissionName: string, _options?: Configuration): Promise<HttpInfo<boolean>> {
-        const result = this.api.enableOnePermissionForUserWithHttpInfo(userName, permissionName, _options);
+    public enableOnePermissionForUserWithHttpInfo(userName: string, permissionName: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<boolean>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.enableOnePermissionForUserWithHttpInfo(userName, permissionName, observableOptions);
         return result.toPromise();
     }
 
@@ -1220,38 +2625,98 @@ export class PromiseUserApi {
      * @param userName
      * @param permissionName
      */
-    public enableOnePermissionForUser(userName: string, permissionName: string, _options?: Configuration): Promise<boolean> {
-        const result = this.api.enableOnePermissionForUser(userName, permissionName, _options);
+    public enableOnePermissionForUser(userName: string, permissionName: string, _options?: PromiseConfigurationOptions): Promise<boolean> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.enableOnePermissionForUser(userName, permissionName, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param userName
      */
-    public getAllPermissionsForUserWithHttpInfo(userName: string, _options?: Configuration): Promise<HttpInfo<Array<UserPermission>>> {
-        const result = this.api.getAllPermissionsForUserWithHttpInfo(userName, _options);
+    public getAllPermissionsForUserWithHttpInfo(userName: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Array<UserPermission>>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getAllPermissionsForUserWithHttpInfo(userName, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param userName
      */
-    public getAllPermissionsForUser(userName: string, _options?: Configuration): Promise<Array<UserPermission>> {
-        const result = this.api.getAllPermissionsForUser(userName, _options);
+    public getAllPermissionsForUser(userName: string, _options?: PromiseConfigurationOptions): Promise<Array<UserPermission>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getAllPermissionsForUser(userName, observableOptions);
         return result.toPromise();
     }
 
     /**
      */
-    public getAllUsersWithHttpInfo(_options?: Configuration): Promise<HttpInfo<Array<UserSummaryDto>>> {
-        const result = this.api.getAllUsersWithHttpInfo(_options);
+    public getAllUsersWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<Array<UserSummaryDto>>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getAllUsersWithHttpInfo(observableOptions);
         return result.toPromise();
     }
 
     /**
      */
-    public getAllUsers(_options?: Configuration): Promise<Array<UserSummaryDto>> {
-        const result = this.api.getAllUsers(_options);
+    public getAllUsers(_options?: PromiseConfigurationOptions): Promise<Array<UserSummaryDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getAllUsers(observableOptions);
         return result.toPromise();
     }
 
@@ -1259,8 +2724,20 @@ export class PromiseUserApi {
      * @param userName
      * @param permissionName
      */
-    public getOnePermissionForUserWithHttpInfo(userName: string, permissionName: string, _options?: Configuration): Promise<HttpInfo<UserPermission>> {
-        const result = this.api.getOnePermissionForUserWithHttpInfo(userName, permissionName, _options);
+    public getOnePermissionForUserWithHttpInfo(userName: string, permissionName: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<UserPermission>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getOnePermissionForUserWithHttpInfo(userName, permissionName, observableOptions);
         return result.toPromise();
     }
 
@@ -1268,24 +2745,60 @@ export class PromiseUserApi {
      * @param userName
      * @param permissionName
      */
-    public getOnePermissionForUser(userName: string, permissionName: string, _options?: Configuration): Promise<UserPermission> {
-        const result = this.api.getOnePermissionForUser(userName, permissionName, _options);
+    public getOnePermissionForUser(userName: string, permissionName: string, _options?: PromiseConfigurationOptions): Promise<UserPermission> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getOnePermissionForUser(userName, permissionName, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param userName
      */
-    public getOneUserWithHttpInfo(userName: string, _options?: Configuration): Promise<HttpInfo<UserSummaryDto>> {
-        const result = this.api.getOneUserWithHttpInfo(userName, _options);
+    public getOneUserWithHttpInfo(userName: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<UserSummaryDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getOneUserWithHttpInfo(userName, observableOptions);
         return result.toPromise();
     }
 
     /**
      * @param userName
      */
-    public getOneUser(userName: string, _options?: Configuration): Promise<UserSummaryDto> {
-        const result = this.api.getOneUser(userName, _options);
+    public getOneUser(userName: string, _options?: PromiseConfigurationOptions): Promise<UserSummaryDto> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.getOneUser(userName, observableOptions);
         return result.toPromise();
     }
 
@@ -1293,8 +2806,20 @@ export class PromiseUserApi {
      * @param userName
      * @param [userPermissionDto]
      */
-    public updateAllPermissionsForUserWithHttpInfo(userName: string, userPermissionDto?: Array<UserPermissionDto>, _options?: Configuration): Promise<HttpInfo<Array<UserPermission>>> {
-        const result = this.api.updateAllPermissionsForUserWithHttpInfo(userName, userPermissionDto, _options);
+    public updateAllPermissionsForUserWithHttpInfo(userName: string, userPermissionDto?: Array<UserPermissionDto>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Array<UserPermission>>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.updateAllPermissionsForUserWithHttpInfo(userName, userPermissionDto, observableOptions);
         return result.toPromise();
     }
 
@@ -1302,8 +2827,20 @@ export class PromiseUserApi {
      * @param userName
      * @param [userPermissionDto]
      */
-    public updateAllPermissionsForUser(userName: string, userPermissionDto?: Array<UserPermissionDto>, _options?: Configuration): Promise<Array<UserPermission>> {
-        const result = this.api.updateAllPermissionsForUser(userName, userPermissionDto, _options);
+    public updateAllPermissionsForUser(userName: string, userPermissionDto?: Array<UserPermissionDto>, _options?: PromiseConfigurationOptions): Promise<Array<UserPermission>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.updateAllPermissionsForUser(userName, userPermissionDto, observableOptions);
         return result.toPromise();
     }
 
@@ -1311,8 +2848,20 @@ export class PromiseUserApi {
      * @param userName
      * @param [userPutDto]
      */
-    public updateOneUserWithHttpInfo(userName: string, userPutDto?: UserPutDto, _options?: Configuration): Promise<HttpInfo<UserSummaryDto>> {
-        const result = this.api.updateOneUserWithHttpInfo(userName, userPutDto, _options);
+    public updateOneUserWithHttpInfo(userName: string, userPutDto?: UserPutDto, _options?: PromiseConfigurationOptions): Promise<HttpInfo<UserSummaryDto>> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.updateOneUserWithHttpInfo(userName, userPutDto, observableOptions);
         return result.toPromise();
     }
 
@@ -1320,8 +2869,20 @@ export class PromiseUserApi {
      * @param userName
      * @param [userPutDto]
      */
-    public updateOneUser(userName: string, userPutDto?: UserPutDto, _options?: Configuration): Promise<UserSummaryDto> {
-        const result = this.api.updateOneUser(userName, userPutDto, _options);
+    public updateOneUser(userName: string, userPutDto?: UserPutDto, _options?: PromiseConfigurationOptions): Promise<UserSummaryDto> {
+        let observableOptions: undefined | ConfigurationOptions
+        if (_options){
+	    observableOptions = {
+                baseServer: _options.baseServer,
+                httpApi: _options.httpApi,
+                middleware: _options.middleware?.map(
+                    m => new PromiseMiddlewareWrapper(m)
+		),
+		middlewareMergeStrategy: _options.middlewareMergeStrategy,
+                authMethods: _options.authMethods
+	    }
+	}
+        const result = this.api.updateOneUser(userName, userPutDto, observableOptions);
         return result.toPromise();
     }
 
