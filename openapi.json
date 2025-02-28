@@ -2620,43 +2620,6 @@
           }
         }
       },
-      "delete": {
-        "tags": [
-          "User"
-        ],
-        "operationId": "DeleteOneUser",
-        "parameters": [
-          {
-            "name": "userName",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "boolean"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "boolean"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "boolean"
-                }
-              }
-            }
-          }
-        }
-      },
       "get": {
         "tags": [
           "User"
@@ -2696,6 +2659,44 @@
       }
     },
     "/api/users/{userName}": {
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "operationId": "DeleteOneUser",
+        "parameters": [
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
       "get": {
         "tags": [
           "User"
@@ -3403,6 +3404,10 @@
             "type": "integer",
             "format": "int64",
             "nullable": true
+          },
+          "rollingSecret": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -3540,6 +3545,10 @@
           "rateLimitResetMins": {
             "type": "integer",
             "format": "int64",
+            "nullable": true
+          },
+          "rollingSecret": {
+            "type": "string",
             "nullable": true
           },
           "overwriteNulls": {
